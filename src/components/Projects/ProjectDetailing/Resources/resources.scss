@@ -1,0 +1,80 @@
+
+.resources {
+    width: 100%;
+    height: 320px;
+    border-radius: 12px;
+    background: #f4f4f4;
+    margin: 40px auto;
+    position: relative;
+}
+
+.titleSections {
+    text-align: left;
+    position: relative;
+    font-weight: 500;
+}
+
+.Mask {
+    width: 100%;
+    height: 100%;
+    background: #677378;
+    border-radius: 12px;
+    opacity: 0.5;
+    position: absolute;
+    top: 0;
+}
+
+.centerMask {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block {
+    display: block;
+    line-height: 0px;
+}
+
+.imageUpload {
+    width: 130px;
+    margin: 0;
+}
+
+.textUpload {
+    font-size: 18px;
+    margin: 0;
+    color: #fff;
+    font-weight: 600;
+    user-select: none;
+    pointer-events: none;
+}
+
+.overflowBox {
+    height: 180px;
+}
+
+.boxResources {
+    height: 100%;
+    overflow-y: auto;
+}
+
+.itemResource {
+    width: 85%;
+    height: 60px;
+    border-radius: 10px;
+    margin: 10px auto;
+    background: #f7f7f7;
+    box-shadow: 0px 1px 1px #091E4240, 0px 0px 1px #091E424F,0 1px 1px rgba(23,43,77,0.2),0 0 1px rgba(23,43,77,0.2);
+}
+
+.boxButtonUpload {
+    width: 98%;
+    display: flex;
+    justify-content: end;
+    height: 95%;
+    position: absolute;
+    top: 0;
+    align-items: end;
+}

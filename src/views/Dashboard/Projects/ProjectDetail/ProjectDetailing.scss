@@ -1,0 +1,110 @@
+#panel__ProjectDetail {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#inputFile {
+    display: none;
+}
+
+.ItemsHead {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.titleProject {
+    font-size: 30px;
+}
+
+.typeProject {
+    font-size: 16px;
+}
+
+.photo {
+    width: 180px;
+    margin-left: 20px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.team {
+    width: 100%;
+    height: 280px;
+    border-radius: 12px;
+    background: #f4f4f4;
+    margin: 10px auto;
+}
+
+.ProjectItems {
+    display: block;
+    text-align: left;
+    line-height: 15px;
+}
+
+.ProjectImage {
+    width: 120px;
+    border-radius: 100%;
+}
+
+.content {
+    display: flex;
+    gap: 10%;
+    margin: 40px;
+    justify-content: center;
+}
+
+.sectionLeft {
+    width: 35%;
+}
+
+.sectionRight {
+    background: #E7E7E7;
+    width: 65%;
+    height: 300px;
+}
+
+.changePhoto:hover {
+    opacity: 1;
+}
+
+.changePhoto {
+    position: absolute;
+    bottom: 0;
+    width: 120px;
+    height: 60px;
+    background-image: linear-gradient(to top, rgb(91, 91, 91) 25%, transparent); /* Gradiente lineal desde abajo hacia arriba */
+    color: #fff;
+    border-radius: 0px 0px 60px 60px;
+    overflow: hidden;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    background-clip: padding-box;
+}
+
+.changePhoto::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 10%;
+    background-color: transparent; /* Color de fondo de la mitad inferior */
+  }
+
+  .changePhoto span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    color: #ffffff; /* Color del texto */
+    font-weight: 600;
+    user-select: none;
+  }

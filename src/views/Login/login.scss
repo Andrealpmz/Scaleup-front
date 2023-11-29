@@ -1,0 +1,560 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap%27');
+
+.logo {
+    width: 260px;
+}
+
+.text {
+    position: relative;
+    width: 450px;
+    height: 116px;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 38px;
+    color: #FFFFFF;
+}
+
+.pfText {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    color: #fff;
+    font-weight: 200;
+    margin-top: -40px;
+}
+
+.material-symbols-rounded {
+    color: #65D4DC;
+    width: 23px;
+}
+
+.textForgot {
+    width: 100%;
+    text-align: justify;
+    height: 33px;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13.3px;
+    line-height: 16px;
+    display: flex;
+    color: #2B4865;
+    letter-spacing: 0px;
+    margin-top: 5px;
+}
+
+.textinfofg {
+    width: 100%;
+    display: flex;
+    text-align: center;
+}
+
+.title-log {
+    width: 286.8px;
+    height: 35px;
+    left: 773px;
+    top: 277px;
+    color: #2B4865;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+}
+
+.title-fgt {
+    width: 100%;
+    height: 35px;
+    top: 277px;
+    color: #2B4865;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 20;
+}
+
+.login {
+  width: 50%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  align-content: center;
+  margin: 0;
+}
+.title {
+  text-align: center;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 20%;
+    height: 400px;
+    min-width: 400px;
+    max-width: 100%;
+    background: #fff;
+    border-radius: 34px;
+    padding: 40px;
+    box-shadow: 0px 5px 16px rgba(8, 15, 52, 0.06);
+    position: absolute;
+    display: flex;
+    text-align: left;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    margin: auto;
+}
+.form-label {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: start;
+    margin-left: 5px;
+}
+
+/* ****** Styles from inputs ****** */
+
+.form-input {
+    background: #FFFFFF;
+    border: 1px solid #EFF0F7;
+    box-shadow: 0px 2px 6px rgba(19, 18, 66, 0.07);
+    border-radius: 46px;
+    padding: 12px;
+    margin-bottom: 15px;
+    font-family: 'Rubik', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+}
+
+.p-input-icon-left {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.p-input-icon-left i {
+    position:absolute;
+    top:50%;
+}
+
+.p-input-icon-left > i:first-of-type {
+    left: 0.75rem;
+    color: #6c757d;
+}
+  
+.p-input-icon-left > .p-inputtext-sm {
+    padding-left: 2.5rem;
+}
+  
+.p-inputtext-sm {
+    box-shadow: 0px 2px 6px rgba(19, 18, 66, 0.07);
+    border: 1px solid #EFF0F7;
+    border-radius: 46px;
+    font-style: normal;
+    font-weight: 400;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #252525;
+    margin: 0;
+    width: 100%; 
+    height: 40px;
+}
+.p-inputtext-sm.p-invalid {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem #fec7cb;
+    border-color: #f34e4e;
+}
+
+.p-inputtext-sm::placeholder { color: #686868; }
+
+.p-error {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #e24c4c;
+    margin-bottom: 0px;
+    margin-left: 5px;
+    width: 100%;
+}
+
+.icons-form {
+    margin-top: -11px;
+}
+
+.material-symbols-rounded {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 24
+}
+
+.form-input::placeholder { color: #686868; }
+
+.input_form {
+    width: 100%;
+    position: relative;
+}
+
+/* ****** Styles from buttons ****** */
+
+.form-submit {
+    position: absolute;
+    right: 40px;
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin: auto;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    height: 40px;  
+    background: #21317C;
+    border-radius: 56px;
+    border: #21317C;
+    width: 136px;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.p-inputtext-sm:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 3px rgb(131 192 253 / 50%);
+    border-color: #08c;
+}
+
+.btnForgot {
+    gap: 8px;
+    margin: auto;
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+    cursor: pointer;
+    height: 40px;  
+    background: #21317C;
+    border-radius: 56px;
+    border: #21317C;
+    width: 100%;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+}
+
+/* ****** Styles from IDs ****** */
+
+#imgLeft {
+    position: relative;
+}
+
+#form-title {
+    position: relative;
+    display: block;
+    margin-top: -30px;
+    margin-left: 5px;
+}
+
+#form-titlefgt {
+    position: relative;
+    display: flex;
+    margin-top: -10px;
+    text-align: center;
+    justify-content: center;
+}
+
+#info {
+    text-align: left;
+    height: 260px;
+    width: 450px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: inline-table;
+    white-space: normal;
+}
+
+#items-left {
+    width: 50%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    align-content: left;
+    margin: 0;
+    display: block;
+}
+
+#content {
+    background: #21317C;
+    display: inline-flex;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#linkRegistro {
+    width: 200px;
+    height: 30px;
+    left: 173px;
+    top: 323px;
+    color: #2B4865;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    margin-top: -13px;
+}
+
+#linkTo {
+    color: #2259F6;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+#linkOlvido {
+    width: 200px;
+    height: 30px;
+    left: 173px;
+    top: 323px;
+    color: #2B4865;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+}
+
+#linkOlvido:hover {
+    text-decoration: underline #2B4865
+}
+
+#btnInferior {
+    margin-top: 18px;
+    display: inline-flex;
+    width: 100%;
+}
+
+#Terms {
+    height: 34px;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 17px;
+    margin-top: 40px;
+}
+
+#Terms a{
+    color: #2259F6;
+    font-family: 'Rubik', sans-serif;
+    font-style: normal;
+    font-weight: bold;
+}
+
+#groupForgot {
+    width: 100%;
+    height: 120px;
+    display: grid;
+    position: relative;
+    margin: 0 auto;
+    top: 10%;
+    left: 10%;
+    transform: translate(-10%, -10%);
+}
+
+#btnDown {
+    width: 100%;
+    position: absolute;
+    bottom: 40px;
+    left: 0;
+}
+
+#linkLogin {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    justify-content: center;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 30px;
+    color: #2259F6;
+}
+
+#linkLogin:hover {
+    text-decoration: underline #2259F6;
+}
+
+#space {
+    height: 10px;
+}
+
+/* ********* MEDIA QUERYS ********* */
+
+/* Tablet */
+@media (max-width: 1100px) {
+    #content {
+        display: flex;
+        flex-direction:column;
+        width: 100%;
+    }
+
+    #info {
+        position: relative;
+        top: 200px;
+        display: block;
+        text-align: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    #items-left {
+        position: relative;
+        width: 100%;
+        display: flex;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    #imgLeft {
+        width: 140px;
+    }
+
+    .text {
+        position: relative;
+        font-size: 25px;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    .pfText {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+        font-size: 14px;
+        margin-top: -60px;
+    }
+
+    .login {
+        position: relative;
+        margin: auto;  
+        background: #21317C;
+    }
+
+    .form {
+        position: relative;  
+        left: 50%;
+        top: 50%;
+        min-width: 320px;
+        transform: translate(-50%, -50%);    
+    }
+}
+
+/* MOVIL L */
+
+@media (max-width: 490px) {
+    .form {
+        min-width: 300px;
+    }
+
+    .title-log {
+        font-size: 30px;
+        text-align: center;
+        width: 100%;
+    }
+
+    #items-left {
+        margin-bottom: 20px;
+    }
+
+    #btnInferior {
+        display: block;
+    }
+
+    #linkRegistro {
+        text-align: center;
+        width: 100%;
+       margin-left: 0;
+    }
+
+    #Terms {
+        text-align: center;
+    }
+
+    .btnSubmit {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .form-submit {
+        position: relative;
+        width: 70%;
+        margin: 10px auto 0px;
+    }
+}
+
+/* MOVIL M */
+
+@media (max-width: 375px) {
+    .form {
+        min-width: 250px;
+    }
+
+    .title-log {
+        font-size: 30px;
+    }
+
+    #items-left {
+        margin-bottom: 40px;
+    }
+}
+
+/* MOVIL S */
+
+@media (max-width: 320px) {
+    .form {
+        min-width: 200px;
+    }
+
+    .title-log {
+        font-size: 25px;
+        text-align: center;
+        width: 100%;
+    }
+
+    #items-left {
+        margin-bottom: 20px;
+    }
+}
+    

@@ -1,0 +1,596 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap%27');
+
+#content {
+    background: #21317C;
+    display: inline-flex;
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.textLeft {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-size: 18px;
+    width: 408px;
+    color: #fff;
+}
+
+.textRight {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-size: 14px;
+    width: 408px;
+    color: #2B4865;
+    width: 566.41px;
+}
+
+.card {
+    box-sizing: border-box;
+    width: 586px;
+    height: 75%;
+    max-height: 1080px;
+    background: #FFFFFF;
+    border: 1px solid #EFF0F7;
+    box-shadow: 0px 5px 16px rgba(8, 15, 52, 0.06);
+    border-radius: 34px;
+    padding: 2em;
+    display: flexbox;
+    flex-grow: 1;
+}
+
+#imagen {
+    width: 330px;  
+}
+
+#imagen2 {
+    width: 250px;  
+}
+
+#imagen3 {
+    width: 160px; 
+}
+
+#left {
+    width: 40%;
+    height: 100%;
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+#Stepper {
+    display: inline-flex;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+
+#step1 {
+    background: #65D4DC;
+    color: #ffffff;
+    border-radius: 100%;
+    padding: 10px;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    align-items: center;
+}
+
+#barraS1, #barraS2, #barraS3 {
+    width: 85px;
+    height: 5px;
+    background: #EFF0F7;
+    transition: all ease 0.5s;
+    text-align: center;
+    align-items: center;
+    border-radius: 180px;
+    margin: 15px;
+}
+
+#barraS1.blue, #barraS2.blue, #barraS3.blue {
+    background: #65D4DC; 
+    transition: all ease 0.5s;
+}
+
+#step2, #step3, #step4 {
+    background: #EFF0F7;
+    transition: all ease 0.5s;
+    color: #2B4865;
+    border-radius: 100%;
+    padding: 10px;
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    align-items: center;
+}
+
+
+#initialBar {
+    background: #65D4DC; 
+    width: 10px;
+    height: 5px;
+    border-radius: 40px;
+}
+
+.numStep {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    height: 100%;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    user-select: none;
+}
+
+.selectRol {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background: #FFFFFF;
+    border: 1px solid #EFF0F7;
+    box-shadow: 0px 2px 6px rgba(19, 18, 66, 0.07);
+    border-radius: 46px;
+    padding: 10px 10px 10px 35px;
+    font-style: normal;
+    font-weight: 400;
+    font-family: 'Rubik', sans-serif;
+    font-size: 12px;
+    color: #252525;
+}
+
+.material-symbols-rounded {
+    color: #65D4DC;
+    width: 23px;
+}
+
+.elements {
+    display: block;
+}
+
+.forum {
+    display: block;
+    height: 100%;
+}
+
+.titulo {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 32px;
+    color: #2B4865;
+}
+
+.p-input-icon-left {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+
+.p-input-icon-left i {
+    position:absolute;
+    top:50%;
+}
+
+.p-input-icon-left > i:first-of-type {
+    left: 0.75rem;
+    color: #65D4DC;
+}
+  
+.p-input-icon-left > .p-inputtext-sm {
+    padding-left: 2.5rem;
+}
+
+.form-label {
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 32px;
+    text-align: left;
+    margin-left: 5px;
+}
+
+.contentForm {
+    height: max-content;
+}
+  
+.p-inputtext-sm {
+    box-shadow: 0px 2px 6px rgba(19, 18, 66, 0.07);
+    border: 1px solid #EFF0F7;
+    border-radius: 46px;
+    font-style: normal;
+    font-weight: 400;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #252525;
+    width: 100%; 
+    height: 40px;
+}
+
+.p-inputtext-sm::placeholder { color: #686868; }
+
+.icons-form {
+    margin-top: -11px;
+}
+
+.material-symbols-rounded {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 300,
+    'GRAD' 0,
+    'opsz' 24
+}
+
+#linkRegistro {
+    width: 100%;
+    height: 20px;
+    color: #2B4865;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 13px;
+    margin-top: -13px;
+    margin-left: 10px;
+    text-align: left;
+}
+
+#form-title {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin-left: 5px;
+}
+
+#line {
+    border: 1px solid #eeeff5;
+    height: 0px;
+}
+
+#titleStep {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 600;
+}
+
+#paragraph {
+    font-family: 'Rubik', sans-serif;
+    font-size: 13px;
+    text-align: center;
+}
+
+.ready {
+    line-height: 20px;
+    margin: auto;
+}
+
+.contentStep4 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.p-error {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    color: #e24c4c;
+    margin-bottom: -30px;
+}
+
+.p-inputtext-sm.p-invalid {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 0.2rem #fec7cb;
+    border-color: #f34e4e;
+}
+
+.p-inputtext-sm:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: 0 0 0 3px rgb(131 192 253 / 50%);
+    border-color: #08c;
+}
+
+.paragraph {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 15px;
+    line-height: 30px;
+    text-align: center;
+}
+
+.formNext {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.form-label {
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    float: left;
+    font-weight: bold;
+    margin-left: 10px;
+    color: #2B4865;
+}
+
+.title-log {
+    width: 100%;
+    height: 35px;
+    color: #2B4865;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 23px;
+    text-align: left;
+    margin-left: 9px;
+}
+
+.twoColumns {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.inputCenter {
+    position: relative;
+    display: block;
+    
+    margin: 0px;
+}
+
+.inputLeft {
+    float: left;
+    display: block;
+    width: 46%;
+    padding-right: 20px;
+}
+
+.inputRight {
+    float: left;
+    display: block;
+    width: 46%;
+    padding-left: 20px;
+    
+}
+
+#Done {
+    margin-top: 30px;
+    width: 120px;
+}
+
+#btnSubmit {
+    width: 132px;
+    height: 51px;
+    border-radius: 61px;
+    color: #fff;
+    background: #0DC18B;
+    text-align: center;
+    margin-top: 20px;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btnSubmit:hover {
+    border-color: #088f66;
+    background-color: #088f66;
+    transition: all ease 0.3s;
+}
+
+#btnSig {
+    width: 132px;
+    height: 51px;
+    border-radius: 61px;
+    color: #fff;
+    background: #21317C;
+    text-align: center;
+    margin-top: 20px;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+#btnSig:hover {
+    background: #172255;
+    border-color: #172255;
+    transition: all ease 0.3s;
+}
+
+#btnBack {
+    width: 132px;
+    height: 51px;
+    border-radius: 61px;
+    color: #21317C;
+    border: 2px solid #21317C;
+    background: transparent;
+    text-align: center;
+    margin-top: 20px;
+    margin-right: 20px;
+    font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+#btnBack:hover {
+    background: #21317C;
+    color: #fff;
+    transition: all ease 0.5s;
+}
+
+#right {
+    background: #F4F7F7;
+    width: 60%;
+    height: 100%;
+    position: absolute;
+    right: 0;
+    display: flex;
+    margin: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+@media only screen and (max-width : 530px) {
+    #content {
+        height: 100%;
+        max-height: auto;
+        background: #F4F7F7;
+    }
+
+    #btnSig, #btnBack, #btnSubmit {
+        width: 120px;
+        height: 45px;
+        font-size: 15px;
+        position: relative;
+        margin-bottom: 20px;
+    }
+
+    #left{
+        display: none;
+        background: #F4F7F7;
+    }
+
+    #right {
+        width: 100%;
+        height: auto;
+    }
+
+    .forum {
+        width: 90%;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    #Stepper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #step1, #step2, #step3, #step4 {
+        width: 10px;
+        height: 10px;
+    }
+
+    .twoColumns {
+        width: 100%;
+        display: block;
+        z-index: 20;
+    }
+
+    .inputLeft, .inputRight {
+        width: 100%;
+        padding-left: 0px;
+    }
+
+    .twoColumns .p-inputtext-sm {
+        width: 100%;
+    }
+
+    .material-symbols-rounded {
+        width: 20px;
+    }
+
+    .p-inputtext-sm {
+        height: 35px;
+        font-size: 11px;
+    }
+
+    .form-label {
+        font-size: 12px;
+    }
+
+    .titulo {
+        font-size: 22px;
+    }
+
+    .p-error {
+        margin-bottom: -20px;
+    }
+
+    .card {
+        height: auto;
+    }
+
+    .titleStep {
+        font-size: 14px;
+    }
+
+    #linkRegistro {
+        font-size: 11px;
+        margin-left: 0;
+        line-height: 16px;
+        margin-bottom: 17px;
+    }
+
+    #paragraph {
+        font-size: 10px;
+        text-align: left;
+        margin-left: 6px;
+        margin-left: 6px;
+        margin-right: 6px;
+        width: 100%;
+    }
+
+    .paragraph {
+        font-size: 12px;
+        line-height: 25px;
+    }
+
+    .title-log {
+        font-size: 18px;
+        margin-left: 0;
+    }
+
+    .numStep {
+        font-size: 14px;
+    }
+}
+
+/***** MEDIAS QUERIES *****/
+@media screen and (min-width: 1700px) {
+
+    .forum {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+
+    .card {
+        width: 850px;
+        height: 75%;
+    }
+
+    #barraS1, #barraS2, #barraS3 {
+        width: 150px;
+        height: 5px;
+        margin: 20px;
+    }
+
+    #step1, #step2, #step3, #step4 {
+        width: 25px;
+        height: 25px;
+    }
+
+    #imagen {
+        width: 450px;  
+    }
+
+    #imagen2 {
+        width: 350px;  
+    }
+
+    #imagen3 {
+        width: 220px; 
+    }
+}

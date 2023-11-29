@@ -1,0 +1,274 @@
+:root {
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+  --category-1-bgColor: #1BE26B;
+  --category-2-bgColor: #8FE3CF;
+  --category-3-bgColor: #67B7D2;
+  --category-4-bgColor: #F9B361;
+  --category-5-bgColor: #576DD3;
+  --category-6-bgColor: #F96161;
+  --category-7-bgColor: #81EC70;
+  --category-8-bgColor: #765CDE;
+  --boxShadowHard: 0 30px 60px -12px rgba(50,50,93,0.25),0 18px 36px -18px rgba(0,0,0,0.3);
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  place-items: center;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+#inputCalendar input {
+  width: 270px;
+  border: 1px solid rgba(188, 188, 188, 1);
+  border-radius: 15px 0px 0px 15px;
+  float: left;
+  display: block;
+  position: relative;
+}
+
+#inputBudget input {
+  width: 100%;
+  border: 1px solid rgba(188, 188, 188, 1);
+  border-radius: 15px;
+  float: left;
+  display: block;
+  margin: 5px 5px 5px 0px;
+  position: relative;
+}
+
+#inputBudget.pinvalid input {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #fec7cb;
+  border-radius: 15px 0px 0px 15px;
+  border: 1px solid #f34e4e;
+}
+
+#inputBudget input:focus {
+  border: 2px solid #1851a7;
+  box-shadow: none;
+}
+
+#withoutgrouping {
+  width: 100%;
+  border: 1px solid rgba(188, 188, 188, 1);
+  border-radius: 15px;
+  float: left;
+  display: block;
+  margin: 5px 5px 5px 0px;
+  position: relative;
+  outline: none;
+  padding: 10.5px;
+}
+
+#withoutgrouping:focus {
+  border: 2px solid #1851a7;
+  box-shadow: none;
+}
+
+#withoutgrouping .p-invalid {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #fec7cb;
+  border-radius: 15px 0px 0px 15px;
+  border: 1px solid #f34e4e;
+}
+
+#inputCalendar .p-button {
+  width: 3rem;
+  padding: 0.75rem 0;
+  background: #3b79d3;
+  border: 1px solid #346bbd;
+  border-radius: 0px 15px 15px 0px;
+}
+
+#inputCalendar .p-button:hover {
+  background: #2e5da5;
+  transition: all ease 0.3s;
+}
+
+#inputCalendar.p-invalidCalendar input {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #fec7cb;
+  border-radius: 15px 0px 0px 15px;
+  border: 1px solid #f34e4e;
+}
+
+#inputCalendar.p-invalidCalendar .p-button{
+  border: 1px solid #f34e4e;
+  box-shadow: 0 0 0 0.2rem #fec7cb;
+}
+
+.pi-calendar {
+  font-size: 16px;
+}
+
+#inputAutocomplete {
+  width: 100%;
+}
+
+#inputAutocomplete ul {
+  width: 100%;
+  height: 100%;
+  font-size: 15px;
+  border: 1px solid rgba(188, 188, 188, 1);
+  border-radius: 15px;
+  float: left;
+  margin: 5px 5px 5px 0px;
+}
+
+#rolAutocomplete .p-inputtext{
+  width: 100%;
+  border: 1px solid rgba(188, 188, 188, 1);
+  border-radius: 15px;
+  float: left;
+  display: block;
+  margin: 5px 5px 5px 0px;
+  position: relative;
+  outline: none;
+  padding: 10.5px;
+}
+
+#rolAutocomplete .p-inputtext:focus{ 
+  box-shadow: none;
+  border: 2px solid #0e50b4;
+}
+
+.menuUpload button{
+  width: 20px;
+}
+
+.p-speeddial-button.p-button.p-button-icon-only {
+  width: 3.5rem;
+  height: 3.5rem;
+}
+
+.p-speeddial-opened li a {
+  background: #f7f7f7;
+  color: #565656;
+  font-size: 24px;
+}
+
+.p-speeddial-opened button {
+  background-color: #8f8f8f;
+}
+
+.p-speeddial .p-button:enabled:hover {
+  background: #626262;
+  color: #ffffff;
+  border-color: #626262;
+}
+
+.p-speeddial .p-button:focus {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #8f8f8f, 0 1px 2px 0 black;
+}
+
+.p-speeddial button {
+  background-color: #626262;
+  border-color: #626262;
+}
+
+.p-speeddial button:hover {
+  background-color: #4e4e4e;
+}
+
+.p-speeddial-opened li a:hover {
+  background: #cecccc;
+  transition: all ease-in 0.3s;
+}
+
+.p-speeddial-opened {
+  background: #eaeaea;
+  border-radius: 50px;
+  padding-left: 10px;
+  transition: transform 0.4s ease;
+}
+
+.p-speeddial-opened-enter-active,
+.p-speeddial-opened-leave-active {
+  transition: transform 0.4s ease;
+}
+
+.p-speeddial-opened-enter,
+.p-speeddial-opened-leave-to {
+  transform: translateX(-100%);
+}
+
+.Cascade {
+  border-radius: 15px;
+  float: left;
+  padding: 0px;
+}
+
+.Cascade span, .p-cascadeselect-item-content {
+  font-size: 14px;
+  padding: 0px;
+}
+#inputAutocomplete .p-inputtext:focus {
+  border: 2px solid #1d68d8;
+  box-shadow: none;
+}
+
+#inputAutocomplete.p-invalidAutocomplete ul {
+  outline: 0 none;
+  outline-offset: 0;
+  box-shadow: 0 0 0 0.2rem #fec7cb;
+  border-radius: 15px;
+  border: 1px solid #f34e4e;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+  button {
+    background-color: #f9f9f9;
+  }
+}
