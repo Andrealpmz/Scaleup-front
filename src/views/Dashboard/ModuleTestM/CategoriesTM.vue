@@ -1,12 +1,18 @@
 <script lang="ts" setup>
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import hotkeys from "hotkeys-js";
 import navbarDash from "@components/navbar.vue";
 import menuList from "@components/navbar.vue";
+import { signOut } from "firebase/auth";
 //import numberTotal from "../../Register/TestTech/TechMaduration.vue";
 
+onMounted(() => {
+//  console.log("checkFormStatus");
+//  checkFormStatus();
+})
+
 const qData = [
-        { title: 'Organizacion', total: 2, contested: 2, nameLink: 'Organization'},
+        { title: 'Organizacion', total: 2, contested: 1, nameLink: 'Organization'},
         { title: 'Estrategía y cultura', total: 3, contested: 3, nameLink: 'Strategy-Culture'},
         { title: 'Experiencia del cliente o usuario', total: 3, contested: 3, nameLink: 'ClientExperience'},
         { title: 'Organizacion, comunicación y talento', total: 4, contested: 4, nameLink: 'OrgCulTalent'},
@@ -42,6 +48,9 @@ const btnListFocused = ref<boolean>(false);
 const displayGrid = ref<boolean>(true);
 const svg1Color = ref("#BABFC5");
 const svg2Color = ref("#576DD3");
+const userDataJSON = localStorage.getItem('userData');
+
+console.log(userDataJSON);
 
 hotkeys("command+k", onKeyDown);
 hotkeys("control+k", onKeyDown);
@@ -71,6 +80,25 @@ function toggleButton(btnClicked: string) {
 function deleteWords() {
   search.value = "";
 }
+
+const checkFormStatus = () => {
+      
+      const formStatus = 'en_progreso';
+
+      switch (formStatus) {
+        case 'en_progreso':
+          // Show an alert to complete the test and provide a button
+          const confirmMessage = 'Completa el test antes de ver más detalles. ¿Quieres ir al test ahora?';
+          if (window.confirm(confirmMessage)) {
+            // Redirect to the TechnologyReadiness page
+            window.location.href = '/TechnologyReadiness';
+          }
+          break;
+        default:
+          // Handle other cases or do nothing
+      }
+    };
+
 const numberTotal = ref(54);
 const porcentajeRedondeado = ref(0);
 function descargarInforme() {
@@ -277,7 +305,10 @@ function descargarInforme() {
                 </div>
             </div>
       </div>
-      <p v-else>Completa todo el test para obtener tu resultado.</p>
+      <p v-else><router-link to="/TechnologyReadiness" tag="button" id="downloadBtn">
+        Completa todo el test para obtener tu resultado.
+      </router-link></p>
+      
     </div>
   </div>
 </template>

@@ -12,5 +12,6 @@ export default defineStore('dataOrganization', {
         country: 1,
         city: 1,
         password: '',
+        form: '',
     })
 })

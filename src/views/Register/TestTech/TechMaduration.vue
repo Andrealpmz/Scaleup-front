@@ -16,6 +16,7 @@
     onMounted(() => {
         porcent.value = 100/totalQuestions;
         progress.value = porcent.value;
+        const formStatus = 'en_progreso';
     })
 
     function btnBack() {

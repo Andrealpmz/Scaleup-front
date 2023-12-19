@@ -6,6 +6,8 @@
     const QContested = ref<number>(1);
     const widthProgress = ref<number>(50);
     const displayModal = ref<boolean>(false);
+    const displayModal2 = ref<boolean>(false);
+    const displayModal3 = ref<boolean>(false);
     const isOpen = ref<boolean>(false);
     const isOpen2 = ref<boolean>(false);
 
@@ -13,9 +15,20 @@
         displayModal.value = true;
     }
 
+    function openModal2() {
+        displayModal2.value = true;
+    }
+
+    function openModal3() {
+        displayModal3.value = true;
+    }
+
     function close() {
         displayModal.value = false;
+        displayModal2.value = false;
+        displayModal3.value = false;
     }
+    
 </script>
 
 <template>
@@ -26,14 +39,31 @@
         <div class="dialog-header">
             <button class="btnCloseModal" @click="close"><i class="pi pi-times iconX"></i></button>
         </div>
-        <p class="textModal">La implementación de herramientas digitales en una organización puede mejorar
-            significativamente su eficiencia, ya que permiten automatizar procesos y reducir
-            el tiempo y esfuerzo necesarios para realizar tareas cotidianas. Además, estas 
-            herramientas también pueden mejorar la precisión y la calidad de los datos,
-            lo que puede inpactar en mejores decisiones y una mayor satisfacción del cliente.
+        <p class="textModal1">hola
         </p>
        </div>
     </div>
+
+    <div class="Modal" v-if="displayModal2" :modal="true">
+       <div class="containerModal">
+        <div class="dialog-header">
+            <button class="btnCloseModal" @click="close"><i class="pi pi-times iconX"></i></button>
+        </div>
+        <p class="textModal1">hola 2
+        </p>
+       </div>
+    </div>
+
+    <div class="Modal" v-if="displayModal3" :modal="true">
+       <div class="containerModal">
+        <div class="dialog-header">
+            <button class="btnCloseModal" @click="close"><i class="pi pi-times iconX"></i></button>
+        </div>
+        <p class="textModal1">hola 3
+        </p>
+       </div>
+    </div>
+
 
     <div id="ContentQuestion">
         <div class="sub-header">
@@ -129,13 +159,13 @@
                                 <p class="paragraph">
                                     ¿Cómo calificas la implementación de tecnología en tu organización para resolver problemas?
                                 </p>
-                                <p class="InfoContested">¿No tienes idea que contestar? Haz clic <span @click="openModal" class="enlaceInfo">aquí</span> para conocer sobre el tema</p>
+                                <p class="InfoContested">¿No tienes idea que contestar? Haz clic <span @click="openModal2" class="enlaceInfo">aquí</span> para conocer sobre el tema</p>
                                 <div class="optionsBlock">
-                                    <button class="btnOptionBlock">Somos referentes de nuestro sector!</button>
-                                    <button class="btnOptionBlock">Vamos en la dirección correcta</button>
-                                    <button class="btnOptionBlock">Avanzando, pero mucho por mejorar</button>
-                                    <button class="btnOptionBlock">Hemos dado algunos pasos</button>
-                                    <button class="btnOptionBlock">Estamos en ceros</button>
+                                    <div class="staticOptionBlock">Somos referentes de nuestro sector!</div>
+                                    <div class="staticOptionBlock">Vamos en la dirección correcta</div>
+                                    <div class="staticOptionBlock">Avanzando, pero mucho por mejorar</div>
+                                    <div class="staticOptionBlock">Hemos dado algunos pasos</div>
+                                    <div class="staticOptionBlock">Estamos en ceros</div>
                                 </div>
                             </div>
                         </div>
@@ -170,10 +200,10 @@
                                 <p class="paragraph">
                                     Tu organización es reactiva ( atender problemas cuando ya han causado consecuencias) o proactivo (se logran atener los problemas antes de que sucedan previniendo daños y consecuencias)
                                 </p>
-                                <p class="InfoContested">¿No tienes idea que contestar? Haz clic <span @click="openModal" class="enlaceInfo">aquí</span> para conocer sobre el tema</p>
+                                <p class="InfoContested">¿No tienes idea que contestar? Haz clic <span @click="openModal3" class="enlaceInfo">aquí</span> para conocer sobre el tema</p>
                                 <div class="optionsBlock">
-                                    <button class="btnOptionBlock">Proactiva</button>
-                                    <button class="btnOptionBlock">Reactiva</button>
+                                    <div class="staticOptionBlock">Proactiva</div>
+                                    <div class="staticOptionBlock">Reactiva</div>
                                 </div>
                             </div>
                         </div>

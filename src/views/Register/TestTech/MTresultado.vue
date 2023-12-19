@@ -60,7 +60,8 @@
         setTimeout(() => {
             redirect.value = true;
             executeMutation();
-            router.push('/Dashboard');
+            router.push('/CategoriesTest');
+            //router.push('/Dashboard');
         }, 6000);
     })
 

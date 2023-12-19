@@ -3,6 +3,7 @@
     import InputText from 'primevue/inputtext';
     import InputMask from 'primevue/inputmask';
     import OrgStore from '@src/stores/dataOrganization';
+    import { useRouter } from 'vue-router';
 
     const user = OrgStore();
     const user_data = reactive({
@@ -46,8 +47,64 @@
         }
     }
 
-    function sendMutation(){
+    const router = useRouter();
+    const redirect = ref(false);
+
+    async function sendMutation() {
+    const userData = {
+        nombre: user.name,
+        mail: user.email,
+        tel: user.phone,
+        company_name: user.name_org,
+        company_type: user.type,
+        city: user.city,
+        nit: user.nit,
+        password: user.password,
+        category: null,
+        total_p: null,
+        respuestas_p: null,
+        porcentaje: null,
+        form: 'sin_iniciar',
+    };
+
+    const userDataJSON = JSON.stringify(userData);
+    console.log(userDataJSON);
+
+    try {
+        const responsePromise = fetch(import.meta.env.VITE_BACKEND + "/auth/register", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: userDataJSON,
+        });
+
+        // Set up a timeout promise for 3 seconds
+        const timeoutPromise = new Promise((_, reject) => {
+            setTimeout(() => {
+                reject(new Error('Timeout'));
+            }, 5000);
+        });
+
+        // Use Promise.race to race between response and timeout
+        const winner = await Promise.race([responsePromise, timeoutPromise]);
+
+        if (winner instanceof Response) {
+            // Request was successful
+            console.log('Solicitud exitosa');
+            redirect.value = true;
+            router.push('/login');
+        } else {
+            // Timeout occurred
+            console.error('Timeout: La solicitud ha tardado demasiado');
+            alert('La solicitud ha tardado demasiado, por favor recargar');
+        }
+    } catch (error) {
+        console.error('Error al realizar la solicitud:', error);
+        alert('Error en el servidor');
     }
+}
+
 
     const validatePassword = function (password1: string, password2: string): boolean{
         return password1 === password2;
