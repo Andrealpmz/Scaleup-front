@@ -6,6 +6,44 @@
     import { TestObject } from './TestObject';
     import { useRouter } from 'vue-router';
 
+    onMounted(() => {
+    updateStatus("terminado");
+})
+
+
+    async function updateStatus(status : String) {
+    try {
+        const local_user = localStorage.getItem('userData');
+        const obj_local_user = JSON.parse(local_user);
+        console.log(obj_local_user);
+
+        const userData = {
+            userId: obj_local_user._id,
+            form: status,
+        };
+
+        // Corrección aquí: eliminado el punto y coma (;) después de JSON.stringify(userData)
+        const response = await fetch(import.meta.env.VITE_BACKEND + "/auth/update_form", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userData)
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+        } else {
+            console.error("Error en la solicitud:", response.statusText);
+            alert("Error en la solicitud");
+        }
+    } catch (error) {
+        console.error("Error al realizar la solicitud:", error);
+        alert("Error en el servidor. Por favor, inténtalo de nuevo.");
+    }
+}
+
     const redirect = ref(false);
     const dataOrg = OrgStore();
     const router = useRouter();

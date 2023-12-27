@@ -18,10 +18,10 @@ const submitted = ref(false);
 async function toAccess() {
   submitted.value = true;
 
+
   const userData = {
     mail: user.email,
     password: user.password,
-    form: user.form,
   };
 
   const userDataJSON = JSON.stringify(userData);
@@ -38,15 +38,13 @@ async function toAccess() {
 
     if (response.ok) {
       const data = await response.json();
-      const formStatus = data.user.form;
       console.log(data.user);
 
       localStorage.clear();
       localStorage.setItem("userData", JSON.stringify(data.user));
       console.log(localStorage.getItem('userData'))
 
-      /* 
-            switch (formStatus) {
+             switch (data.formStatus) {
                 case "terminado":
                     window.location.href = '/CategoriesTest';
                     break;
@@ -57,13 +55,13 @@ async function toAccess() {
                     window.location.href = '/TechnologyReadiness';
                     break;
                 default:
-                    console.error('Unexpected form status:', formStatus);
+                    console.error('Unexpected form status:', data.formStatus);
                     alert('Estado desconocido, intenta de nuevo');
                     break;
-            } */
+              }  
     } else {
-      console.error("Error en la solicitud:", response.statusText);
-      alert("Error en la solicitud");
+      console.error("Credenciales incorrectas:", response.statusText);
+            alert("Credenciales incorrectas");
     }
   } catch (error) {
     console.error("Error al realizar la solicitud:", error);
