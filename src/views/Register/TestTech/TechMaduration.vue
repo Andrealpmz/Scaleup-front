@@ -14,15 +14,14 @@ const totalQuestions = 23;
 const numberTotal = ref(0);
 
 onMounted(() => {
-    console.log("hola");
     porcent.value = 100 / totalQuestions;
     progress.value = porcent.value;
-    updateStatus();
+    updateStatus("en_progreso");
 })
 
-const formStatus = 'en_progreso';
 
-async function updateStatus() {
+
+async function updateStatus(status : String) {
     try {
         const local_user = localStorage.getItem('userData');
         const obj_local_user = JSON.parse(local_user);
@@ -30,11 +29,11 @@ async function updateStatus() {
 
         const userData = {
             userId: obj_local_user._id,
-            form: formStatus,
+            form: status,
         };
 
         // Corrección aquí: eliminado el punto y coma (;) después de JSON.stringify(userData)
-        const response = await fetch(import.meta.env.VITE_BACKEND + "/auth/update", {
+        const response = await fetch(import.meta.env.VITE_BACKEND + "/auth/update_form", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -216,7 +215,7 @@ const data = [
         </div>
     </div>
     <div v-if="step === 23">
-        <MTresultado :sendTest="test" />
+        <MTresultado :sendTest="test" />        
     </div>
 </template>
 
