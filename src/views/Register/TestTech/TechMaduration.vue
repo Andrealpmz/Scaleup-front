@@ -17,15 +17,16 @@ onMounted(() => {
     porcent.value = 100 / totalQuestions;
     progress.value = porcent.value;
     updateStatus("en_progreso");
+
 })
 
+const local_user = localStorage.getItem('userData');
+const obj_local_user = JSON.parse(local_user);
+console.log(obj_local_user);
 
 
-async function updateStatus(status : String) {
+async function updateStatus(status: String) {
     try {
-        const local_user = localStorage.getItem('userData');
-        const obj_local_user = JSON.parse(local_user);
-        console.log(obj_local_user);
 
         const userData = {
             userId: obj_local_user._id,
@@ -43,16 +44,58 @@ async function updateStatus(status : String) {
 
         if (response.ok) {
             const data = await response.json();
-            console.log(data);
+
+            obj_local_user.form = status;
+            localStorage.setItem('userData', obj_local_user);
+            console.log(localStorage.getItem('userData'));
+
         } else {
             console.error("Error en la solicitud:", response.statusText);
             alert("Error en la solicitud");
         }
+
     } catch (error) {
         console.error("Error al realizar la solicitud:", error);
         alert("Error en el servidor. Por favor, inténtalo de nuevo.");
     }
+
 }
+
+async function updatePreguntas(numberTotal: any) {
+    try {
+        const userData = {
+            userId: obj_local_user._id,
+            total_p: numberTotal,
+        };
+
+        // Corrección aquí: eliminado el punto y coma (;) después de JSON.stringify(userData)
+        const response = await fetch(import.meta.env.VITE_BACKEND + "/auth/update_form_preguntas", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userData)
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+
+            obj_local_user.total_p = numberTotal;
+            localStorage.setItem('userData', obj_local_user);
+            console.log(localStorage.getItem('userData'));
+
+        } else {
+            console.error("Error en la solicitud:", response.statusText);
+            alert("Error en la solicitud");
+        }
+
+    } catch (error) {
+        console.error("Error al realizar la solicitud:", error);
+        alert("Error en el servidor. Por favor, inténtalo de nuevo.");
+    }
+
+}
+
 
 function captureData(i: number, index: number) {
 
@@ -100,6 +143,11 @@ function captureData(i: number, index: number) {
     console.log('Valor total: ' + numberTotal.value);
     console.log('Porcentaje: ' + (numberTotal.value / 178) * 100 + '%');
     test.push(testM);
+    console.log(numberTotal.value);
+
+    if (step.value === 23) {
+        updatePreguntas(numberTotal.value);
+    }
 }
 
 const imgs = [
@@ -215,7 +263,8 @@ const data = [
         </div>
     </div>
     <div v-if="step === 23">
-        <MTresultado :sendTest="test" />        
+        <MTresultado :sendTest="test" />
+
     </div>
 </template>
 

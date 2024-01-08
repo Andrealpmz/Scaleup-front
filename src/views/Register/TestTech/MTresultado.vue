@@ -8,11 +8,11 @@
 
     onMounted(() => {
     updateStatus("terminado");
-})
-
+})  
 
     async function updateStatus(status : String) {
     try {
+
         const local_user = localStorage.getItem('userData');
         const obj_local_user = JSON.parse(local_user);
         console.log(obj_local_user);

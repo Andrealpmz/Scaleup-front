@@ -43,8 +43,8 @@ async function toAccess() {
       localStorage.clear();
       localStorage.setItem("userData", JSON.stringify(data.user));
       console.log(localStorage.getItem('userData'))
-
-             switch (data.formStatus) {
+      console.log(data.user.form);
+             switch (data.user.form) {
                 case "terminado":
                     window.location.href = '/CategoriesTest';
                     break;
