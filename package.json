@@ -41,9 +41,10 @@
     "socket.io-client": "^4.7.2",
     "vue": "^3.2.45",
     "vue-apollo": "^3.1.0",
-    "vue-router": "^4.1.6",
+    "vue-router": "^4.2.5",
     "vue-upload-component": "^2.8.23",
-    "vue3-datepicker": "^0.3.4"
+    "vue3-datepicker": "^0.3.4",
+    "vuex": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",

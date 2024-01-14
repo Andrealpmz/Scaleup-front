@@ -9,25 +9,46 @@ export default {
     selectItem(item: number) { // Especifica el tipo de item como número
       this.activeItem = item;
     },
+    cerrarSesion() {
+      // Eliminar datos del localStorage
+      localStorage.removeItem('userData');
+      this.$router.push('/');
+    },
   },
 };
+
 </script>
 
 <template>
      <div>
         <nav class="navbarDash">
         <img src="@assets/svg/ScaleUp-logo.svg" draggable="false" class="logo">
-    </nav>
-        <ul class="menuList">
-        <li :class="{ active: activeItem === 1 }" @click="selectItem(1)">Item 1</li>
-        <li :class="{ active: activeItem === 2 }" @click="selectItem(2)">Item 2</li>
-        <li :class="{ active: activeItem === 3 }" @click="selectItem(3)">Item 3</li>
-        <li :class="{ active: activeItem === 4 }" @click="selectItem(4)">Item 4</li>
-        </ul>
+        <button class="icon-container">
+          <img src="@assets/svg/logout.svg" @click="cerrarSesion" class="icon-small" />
+        </button>
+       <div>
+        <p> nombre empresa</p>
+       </div> 
+     </nav>
     </div>
 </template>
 
 <style scoped>
+
+.icon-small {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  margin-top: 16px;
+  margin-left: 20px;
+  height: 40px;
+}
     .logo {
     width: 160px;
     margin-left: 60px;

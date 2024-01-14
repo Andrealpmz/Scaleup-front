@@ -17,49 +17,12 @@ onMounted(() => {
     porcent.value = 100 / totalQuestions;
     progress.value = porcent.value;
     updateStatus("en_progreso");
-
+  //  updatePreguntas(numberTotal.value);
 })
 
 const local_user = localStorage.getItem('userData');
-const obj_local_user = JSON.parse(local_user);
-console.log(obj_local_user);
-
-
-async function updateStatus(status: String) {
-    try {
-
-        const userData = {
-            userId: obj_local_user._id,
-            form: status,
-        };
-
-        // Corrección aquí: eliminado el punto y coma (;) después de JSON.stringify(userData)
-        const response = await fetch(import.meta.env.VITE_BACKEND + "/auth/update_form", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify(userData)
-        });
-
-        if (response.ok) {
-            const data = await response.json();
-
-            obj_local_user.form = status;
-            localStorage.setItem('userData', obj_local_user);
-            console.log(localStorage.getItem('userData'));
-
-        } else {
-            console.error("Error en la solicitud:", response.statusText);
-            alert("Error en la solicitud");
-        }
-
-    } catch (error) {
-        console.error("Error al realizar la solicitud:", error);
-        alert("Error en el servidor. Por favor, inténtalo de nuevo.");
-    }
-
-}
+        const obj_local_user = JSON.parse(local_user);
+        console.log(obj_local_user);
 
 async function updatePreguntas(numberTotal: any) {
     try {
@@ -96,6 +59,35 @@ async function updatePreguntas(numberTotal: any) {
 
 }
 
+
+async function updateStatus(status : String) {
+    try {
+        const userData = {
+            userId: obj_local_user._id,
+            form: status,
+        };
+
+        // Corrección aquí: eliminado el punto y coma (;) después de JSON.stringify(userData)
+        const response = await fetch(import.meta.env.VITE_BACKEND + "/auth/update_form", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(userData)
+        });
+
+        if (response.ok) {
+            const data = await response.json();
+            console.log(data);
+        } else {
+            console.error("Error en la solicitud:", response.statusText);
+            alert("Error en la solicitud");
+        }
+    } catch (error) {
+        console.error("Error al realizar la solicitud:", error);
+        alert("Error en el servidor. Por favor, inténtalo de nuevo.");
+    }
+}
 
 function captureData(i: number, index: number) {
 
@@ -142,11 +134,12 @@ function captureData(i: number, index: number) {
     numberTotal.value += data[i].value;
     console.log('Valor total: ' + numberTotal.value);
     console.log('Porcentaje: ' + (numberTotal.value / 178) * 100 + '%');
+    console.log('qes: ', testM.question);
+    console.log('cat: ', testM.category);
     test.push(testM);
-    console.log(numberTotal.value);
 
     if (step.value === 23) {
-        updatePreguntas(numberTotal.value);
+         updatePreguntas(numberTotal.value);
     }
 }
 
@@ -201,6 +194,7 @@ const data = [
     { category_id: 8, category: 'Información y datos', question: '¿Cuenta con tableros de análisis de datos en su organización?', content: '', value: 0, answers: ['Sí', 'No', 'No sé'] },
     { category_id: 8, category: 'Información y datos', question: '¿Cuántas bases de datos maneja dentro de su organización?', content: '', value: 0, answers: ['1 a 3', '4 a 5', '5 a 10', '10 a 20', '20 o más'] }
 ];
+
 </script>
 
 <template>
@@ -263,8 +257,7 @@ const data = [
         </div>
     </div>
     <div v-if="step === 23">
-        <MTresultado :sendTest="test" />
-
+        <MTresultado />   
     </div>
 </template>
 

@@ -2,12 +2,22 @@
     import navbarDash from '@components/navbar.vue';
     import { ref } from 'vue';
 
-    const TotalQ = ref<number>(2);
-    const QContested = ref<number>(1);
+    const TotalQ = ref<number>(1);
+    const QContested = ref<number>(0);
     const widthProgress = ref<number>(50);
     const displayModal = ref<boolean>(false);
     const isOpen = ref<boolean>(false);
     const isOpen2 = ref<boolean>(false);
+
+    const local_user = localStorage.getItem('userData');
+const obj_local_user = JSON.parse(local_user);
+
+if (obj_local_user.form === 'en_progreso') {
+        QContested.value = 0;
+  }
+   else if (obj_local_user.form === 'terminado') {
+    QContested.value = TotalQ.value;
+  }
 
     function openModal() {
         displayModal.value = true;
@@ -77,7 +87,7 @@
                             <div class="iconQuestion cir1">
                                 <img src="@assets/svg/Checked.svg">
                             </div>
-                            <span class="textQuestion strikethrough">Cantidad de colaboradores</span>
+                            <span class="textQuestion">Cantidad de colaboradores</span>
                         </div>
                         <div class="btnDetails">
                             <i :class="isOpen ? 'pi pi-angle-up' : 'pi pi-angle-down'"></i>
@@ -102,11 +112,12 @@
                                 </p>
                                 <p class="InfoContested">¿No tienes idea que contestar? Haz clic <span @click="openModal" class="enlaceInfo">aquí</span> para conocer sobre el tema</p>
                                 <div class="optionsBlock">
-                                    <button class="btnOptionBlock">Idea</button>
-                                    <button class="btnOptionBlock">StartUp</button>
-                                    <button class="btnOptionBlock">Pyme</button>
-                                    <button class="btnOptionBlock">Nacional</button>
-                                    <button class="btnOptionBlock">Internacional</button>
+                                    <div class="staticOptionBlock">1 a 10</div>
+                                    <div class="staticOptionBlock">11 a 25</div>
+                                    <div class="staticOptionBlock">26 a 50</div>
+                                    <div class="staticOptionBlock">51 a 80</div>
+                                    <div class="staticOptionBlock">81 a 100</div>
+                                    <div class="staticOptionBlock">101 a 500</div>
                                 </div>
                             </div>
                         </div>

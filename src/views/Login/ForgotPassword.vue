@@ -14,10 +14,12 @@ export default {
     }, 
 
     methods: {
+
         SendEmail(){
             this.sendMsgEmail = true;
         }
     }
+
 }
 </script>
 

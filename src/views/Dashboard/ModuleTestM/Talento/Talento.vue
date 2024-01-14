@@ -2,13 +2,24 @@
     import navbarDash from '@components/navbar.vue';
     import { ref } from 'vue';
 
-    const TotalQ = ref<number>(2);
-    const QContested = ref<number>(1);
+    const TotalQ = ref<number>(4);
+    const QContested = ref<number>(0);
     const widthProgress = ref<number>(50);
     const displayModal = ref<boolean>(false);
     const isOpen = ref<boolean>(false);
     const isOpen2 = ref<boolean>(false);
 
+    const local_user = localStorage.getItem('userData');
+const obj_local_user = JSON.parse(local_user);
+
+if (obj_local_user.form === 'en_progreso') {
+        QContested.value = 0;
+  }
+   else if (obj_local_user.form === 'terminado') {
+    QContested.value = TotalQ.value;
+  }
+
+  
     function openModal() {
         displayModal.value = true;
     }
@@ -70,7 +81,7 @@
                             <div class="iconQuestion cir4">
                                 <img src="@assets/svg/Checked.svg">
                             </div>
-                            <span class="textQuestion strikethrough">Área de tecnología</span>
+                            <span class="textQuestion">Área de tecnología</span>
                         </div>
                         <div class="btnDetails">
                             <i :class="isOpen ? 'pi pi-angle-up' : 'pi pi-angle-down'"></i>
@@ -108,7 +119,7 @@
                             <div class="iconQuestion cir4">
                                 <img src="@assets/svg/Checked.svg">
                             </div>
-                            <span class="textQuestion strikethrough">Área de tecnología</span>
+                            <span class="textQuestion">Área de tecnología</span>
                         </div>
                         <div class="btnDetails">
                             <i :class="isOpen ? 'pi pi-angle-up' : 'pi pi-angle-down'"></i>
@@ -150,7 +161,7 @@
                             <div class="iconQuestion cir4">
                                 <img src="@assets/svg/Checked.svg">
                             </div>
-                            <span class="textQuestion strikethrough">Área de tecnología</span>
+                            <span class="textQuestion">Área de tecnología</span>
                         </div>
                         <div class="btnDetails">
                             <i :class="isOpen ? 'pi pi-angle-up' : 'pi pi-angle-down'"></i>
@@ -174,11 +185,11 @@
                                 </p>
                                 <p class="InfoContested">¿No tienes idea que contestar? Haz clic <span @click="openModal" class="enlaceInfo">aquí</span> para conocer sobre el tema</p>
                                 <div class="optionsBlock">
-                                    <button class="btnOptionBlock">Somos referentes de nuestro sector!</button>
-                                    <button class="btnOptionBlock">Vamos en la dirección correcta</button>
-                                    <button class="btnOptionBlock">Avanzando, pero mucho por mejorar</button>
-                                    <button class="btnOptionBlock">Hemos dado algunos pasos</button>
-                                    <button class="btnOptionBlock">Estamos en ceros</button>
+                                    <div class="staticOptionBlock">Somos referentes de nuestro sector!</div>
+                                    <div class="staticOptionBlock">Vamos en la dirección correcta</div>
+                                    <div class="staticOptionBlock">Avanzando, pero mucho por mejorar</div>
+                                    <div class="staticOptionBlock">Hemos dado algunos pasos</div>
+                                    <div class="staticOptionBlock">Estamos en ceros</div>
                                 </div>
                             </div>
                         </div>
@@ -191,7 +202,7 @@
                             <div class="iconQuestion cir4">
                                 <img src="@assets/svg/Checked.svg">
                             </div>
-                            <span class="textQuestion strikethrough">Área de tecnología</span>
+                            <span class="textQuestion">Área de tecnología</span>
                         </div>
                         <div class="btnDetails">
                             <i :class="isOpen ? 'pi pi-angle-up' : 'pi pi-angle-down'"></i>
@@ -215,11 +226,11 @@
                                 </p>
                                 <p class="InfoContested">¿No tienes idea que contestar? Haz clic <span @click="openModal" class="enlaceInfo">aquí</span> para conocer sobre el tema</p>
                                 <div class="optionsBlock">
-                                    <button class="btnOptionBlock">Somos referentes de nuestro sector!</button>
-                                    <button class="btnOptionBlock">Vamos en la dirección correcta</button>
-                                    <button class="btnOptionBlock">Avanzando, pero mucho por mejorar</button>
-                                    <button class="btnOptionBlock">Hemos dado algunos pasos</button>
-                                    <button class="btnOptionBlock">Estamos en ceros</button>
+                                    <div class="staticOptionBlock">Somos referentes de nuestro sector!</div>
+                                    <div class="staticOptionBlock">Vamos en la dirección correcta</div>
+                                    <div class="staticOptionBlock">Avanzando, pero mucho por mejorar</div>
+                                    <div class="staticOptionBlock">Hemos dado algunos pasos</div>
+                                    <div class="staticOptionBlock">Estamos en ceros</div>
                                 </div>
                             </div>
                         </div>

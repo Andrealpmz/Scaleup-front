@@ -148,7 +148,7 @@ async function toAccess() {
         </div>
 
         <div id="btnInferior">
-          <router-link to="/forgotPass"
+          <router-link to="/CreatePass"
             ><span id="linkOlvido">¿Olvidaste la contraseña?</span></router-link
           >
           <div class="btnSubmit">

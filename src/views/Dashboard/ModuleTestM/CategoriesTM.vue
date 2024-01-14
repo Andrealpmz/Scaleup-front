@@ -2,33 +2,40 @@
 import { onMounted, ref } from "vue";
 import hotkeys from "hotkeys-js";
 import navbarDash from "@components/navbar.vue";
-import menuList from "@components/navbar.vue";
-import { signOut } from "firebase/auth";
-//import numberTotal from "../../Register/TestTech/TechMaduration.vue";
 
 onMounted(() => {
-  //  console.log("checkFormStatus");
-  //  checkFormStatus();
+  
 })
 
 const local_user = localStorage.getItem('userData');
 const obj_local_user = JSON.parse(local_user);
-console.log(obj_local_user);
+
+const empresa = obj_local_user.company_name;
 
 const qData = [
-  { title: 'Organizacion', total: 2, contested: 1, nameLink: 'Organization' },
-  { title: 'Estrategía y cultura', total: 3, contested: 3, nameLink: 'Strategy-Culture' },
-  { title: 'Experiencia del cliente o usuario', total: 3, contested: 3, nameLink: 'ClientExperience' },
-  { title: 'Organizacion, comunicación y talento', total: 4, contested: 4, nameLink: 'OrgCulTalent' },
-  { title: 'Productos y servicios', total: 3, contested: 3, nameLink: 'Product-Services' },
-  { title: 'Infraestructura y tecnología', total: 4, contested: 4, nameLink: 'InfraTec' },
-  { title: 'Procesos', total: 4, contested: 4, nameLink: 'Process' },
-  { title: 'Información y datos', total: 3, contested: 3, nameLink: 'Info-Data' }
+  { title: 'Organizacion', total: 1, contested: 0, nameLink: 'Organization' },
+  { title: 'Estrategía y cultura', total: 3, contested: 0, nameLink: 'Strategy-Culture' },
+  { title: 'Experiencia del cliente o usuario', total: 3, contested: 0, nameLink: 'ClientExperience' },
+  { title: 'Organizacion, comunicación y talento', total: 4, contested: 0, nameLink: 'OrgCulTalent' },
+  { title: 'Productos y servicios', total: 3, contested: 0, nameLink: 'Product-Services' },
+  { title: 'Infraestructura y tecnología', total: 3, contested: 0, nameLink: 'InfraTec' },
+  { title: 'Procesos', total: 3, contested: 0, nameLink: 'Process' },
+  { title: 'Información y datos', total: 3, contested: 0, nameLink: 'Info-Data' }
 ];
+
+if (obj_local_user.form === 'en_progreso') {
+  qData.forEach(item => {
+    item.contested = 0;
+  });
+} else if (obj_local_user.form === 'terminado') {
+  qData.forEach(item => {
+    item.contested = item.total;
+  });
+}
+
 
 const allQuestionsAnswered = ref(false);
 
-// Calcular la propiedad calculada
 const calculateAllQuestionsAnswered = () => {
   const totalContested = qData.reduce(
     (acc, category) => acc + category.contested,
@@ -41,7 +48,7 @@ const calculateAllQuestionsAnswered = () => {
   allQuestionsAnswered.value = totalContested === totalQuestions;
 };
 
-calculateAllQuestionsAnswered(); // Llamar a la función para calcularlo inicialmente
+calculateAllQuestionsAnswered(); 
 
 const isFocused = ref<boolean>(false);
 const search = ref<string>("");
@@ -85,23 +92,8 @@ function deleteWords() {
   search.value = "";
 }
 
-const checkFormStatus = () => {
-
-  const formStatus = 'en_progreso';
-
-  switch (formStatus) {
-    case 'en_progreso':
-      // Show an alert to complete the test and provide a button
-      const confirmMessage = 'Completa el test antes de ver más detalles. ¿Quieres ir al test ahora?';
-      if (window.confirm(confirmMessage)) {
-        // Redirect to the TechnologyReadiness page
-        window.location.href = '/TechnologyReadiness';
-      }
-      break;
-    default:
-    // Handle other cases or do nothing
-  }
-};
+const porcentaje = (obj_local_user.total_p / 178) * 100;
+  const porcentajeRedondeado = Math.round(porcentaje)
 
 
 function descargarInforme() {
@@ -238,17 +230,16 @@ function descargarInforme() {
 
     <div>
 
+      <h2 class="titulo">Resultado test de maduración</h2>
       <div v-if="obj_local_user.form === 'terminado'">
-        <h2 class="titulo">Resultado test de maduración</h2>
         <div class="optionsInfoT">
           <div class="resultTestT">
             <div class="dataCategoryT">
               <h2>Diagnóstico de Madurez Tecnológica</h2>
-              <p>Tu porcentaje de madurez es: </p>
-              <button id="downloadBtn" @click="descargarInforme">Descargar Informe</button>
+              <p>Porcentaje de madurez para la empresa {{ empresa }} es: {{ porcentajeRedondeado }} %</p>
+              <button id="downloadBtn" class="buttoninfor" @click="descargarInforme">Descargar Informe</button>
             </div>
             <div class="imageContainer">
-              <!-- Tu imagen aquí -->
               <img src="http://localhost:5173/src/assets/images/TestMaduration/C5/simTest10.png"
                 alt="Descripción de la imagen">
             </div>
@@ -257,7 +248,6 @@ function descargarInforme() {
       </div>
       <p v-else><router-link to="/TechnologyReadiness" tag="button" id="downloadBtn">
           Completa todo el test para obtener tu resultado.
-          <p>{{ obj_local_user.form }}</p>
         </router-link></p>
 
     </div>

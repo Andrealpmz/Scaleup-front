@@ -2,14 +2,25 @@
     import navbarDash from '@components/navbar.vue';
     import { ref } from 'vue';
 
-    const TotalQ = ref<number>(2);
-    const QContested = ref<number>(1);
+    const TotalQ = ref<number>(3);
+    const QContested = ref<number>(0);
     const widthProgress = ref<number>(50);
     const displayModal = ref<boolean>(false);
     const displayModal2 = ref<boolean>(false);
     const displayModal3 = ref<boolean>(false);
     const isOpen = ref<boolean>(false);
     const isOpen2 = ref<boolean>(false);
+
+const local_user = localStorage.getItem('userData');
+const obj_local_user = JSON.parse(local_user);
+
+if (obj_local_user.form === 'en_progreso') {
+        QContested.value = 0;
+  }
+   else if (obj_local_user.form === 'terminado') {
+    QContested.value = TotalQ.value;
+  }
+
 
     function openModal() {
         displayModal.value = true;
@@ -101,7 +112,7 @@
                             <div class="iconQuestion cir2">
                                 <img src="@assets/svg/Checked.svg">
                             </div>
-                            <span class="textQuestion strikethrough">Herramientas digitales</span>
+                            <span class="textQuestion">Herramientas digitales</span>
                         </div>
                         <div class="btnDetails">
                             <i :class="isOpen ? 'pi pi-angle-up' : 'pi pi-angle-down'"></i>
@@ -137,7 +148,7 @@
                             <div class="iconQuestion cir2">
                                 <img src="@assets/svg/Checked.svg">
                             </div>
-                            <span class="textQuestion strikethrough">Herramientas digitales</span>
+                            <span class="textQuestion">Herramientas digitales</span>
                         </div>
                         <div class="btnDetails">
                             <i :class="isOpen ? 'pi pi-angle-up' : 'pi pi-angle-down'"></i>
@@ -178,7 +189,7 @@
                             <div class="iconQuestion cir2">
                                 <img src="@assets/svg/Checked.svg">
                             </div>
-                            <span class="textQuestion strikethrough">Herramientas digitales</span>
+                            <span class="textQuestion">Herramientas digitales</span>
                         </div>
                         <div class="btnDetails">
                             <i :class="isOpen ? 'pi pi-angle-up' : 'pi pi-angle-down'"></i>

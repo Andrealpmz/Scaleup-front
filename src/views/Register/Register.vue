@@ -71,39 +71,55 @@
     console.log(userDataJSON);
 
     try {
-        const responsePromise = fetch(import.meta.env.VITE_BACKEND + "/auth/register", {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: userDataJSON,
-        });
+    const responsePromise = fetch(import.meta.env.VITE_BACKEND + "/auth/register", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: userDataJSON,
+    });
 
-        // Set up a timeout promise for 3 seconds
-        const timeoutPromise = new Promise((_, reject) => {
-            setTimeout(() => {
-                reject(new Error('Timeout'));
-            }, 5000);
-        });
+    // Set up a timeout promise for 3 seconds
+    const timeoutPromise = new Promise((_, reject) => {
+        setTimeout(() => {
+            reject(new Error('Timeout'));
+        }, 5000);
+    });
 
-        // Use Promise.race to race between response and timeout
-        const winner = await Promise.race([responsePromise, timeoutPromise]);
+    // Use Promise.race to race between response and timeout
+    const winner = await Promise.race([responsePromise, timeoutPromise]);
 
-        if (winner instanceof Response) {
-            // Request was successful
+    if (winner instanceof Response) {
+        // Request was successful
+        if (winner.ok) {
+            // HTTP status code is in the range 200-299
             console.log('Solicitud exitosa');
             redirect.value = true;
             router.push('/login');
         } else {
-            // Timeout occurred
-            console.error('Timeout: La solicitud ha tardado demasiado');
-            alert('La solicitud ha tardado demasiado, por favor recargar');
+            // HTTP status code is not in the range 200-299
+            if (winner.status === 400) {
+                // Handle specific error for status code 400
+                const errorData = await winner.json();
+                console.error('Error en la solicitud:', errorData.message);
+                alert(errorData.message);
+            } else {
+                // Handle other HTTP status codes
+                console.error('Error en la solicitud. Código de estado:', winner.status);
+                alert('Error en el servidor');
+            }
         }
-    } catch (error) {
-        console.error('Error al realizar la solicitud:', error);
-        alert('Error en el servidor');
+    } else {
+        // Timeout occurred
+        console.error('Timeout: La solicitud ha tardado demasiado');
+        alert('La solicitud ha tardado demasiado, por favor recargar');
     }
+} catch (error) {
+    console.error('Error al realizar la solicitud:', error);
+    alert('Error en el servidor');
 }
+}
+
 
 
     const validatePassword = function (password1: string, password2: string): boolean{
