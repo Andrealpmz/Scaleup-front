@@ -65,6 +65,8 @@
         respuestas_p: null,
         porcentaje: null,
         form: 'sin_iniciar',
+        resetPasswordToken: null,
+        resetPasswordExpires: null
     };
 
     const userDataJSON = JSON.stringify(userData);
@@ -278,12 +280,12 @@
                                         <i class="icons-form"><img draggable="false" src="@assets/svg/icon/locationCity.svg" class="material-symbols-rounded"/></i>
                                         <input
                                             type="text" 
-                                            :class="{'p-invalid':user.city === 0 && validarStep2 === true}"
+                                            :class="{'p-invalid':user.city === '' && validarStep2 === true}"
                                             class="p-inputtext-sm" 
                                             v-model="user.city" 
                                             placeholder="Ingresa la ciudad" />
                                     </span>
-                                    <small v-if="user.city === 0 && validarStep2 === true" class="p-error">La ciudad es requerida</small>
+                                    <small v-if="user.city === '' && validarStep2 === true" class="p-error">La ciudad es requerida</small>
                                 </div>
 
                                 <div class="inputSingle">
