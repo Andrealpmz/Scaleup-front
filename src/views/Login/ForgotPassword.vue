@@ -1,27 +1,56 @@
 <script lang="ts">
 import InputText from 'primevue/inputtext';
+import OrgStore from "@src/stores/dataOrganization";
 
 export default {
-    data() {
-        return {
-            email: '',
-            sendMsgEmail: false
-        }
-    },
-
-    components: {
-        InputText
-    }, 
-
-    methods: {
-
-        SendEmail(){
-            this.sendMsgEmail = true;
-        }
+  data() {
+    return {
+      mail: '',
+      sendMsgEmail: false
     }
+  },
 
+  components: {
+    InputText
+  }, 
+
+  methods: {
+    async requestResetToken() {
+const userData = {
+  mail: this.mail,
+};
+
+const userDataJSON = JSON.stringify(userData);
+
+      try {
+        const response = await fetch(import.meta.env.VITE_BACKEND + "/auth/forgotPassword", {
+            
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: userDataJSON,
+        });
+        if (response.ok) {
+        const data = await response.json();
+        alert(data.message);
+        // Optionally, you can redirect the user or show a confirmation message
+        } else {
+        const errorData = await response.json();
+        console.error("Error en la solicitud:", response.statusText);
+        alert(errorData.error);
+        }
+      } catch (error) {
+        console.error("Error al realizar la solicitud:", error);
+        alert("Error en el servidor. Por favor, inténtalo de nuevo.");
+      }
+    },
+  },
 }
 </script>
+
+<!-- rest of the template remains unchanged -->
+
 
 <template>
     <article id="content">
@@ -52,12 +81,12 @@ export default {
                     <InputText 
                         type="text"
                         class="p-inputtext-sm" 
-                        :class="{'p-invalid':email === '' && sendMsgEmail != false}"
-                        v-model="email"
+                        :class="{'p-invalid':mail === '' && sendMsgEmail != false}"
+                        v-model="mail"
                         placeholder="Ingresa tu email" />
                 </span>
-                <small v-if="email === '' && sendMsgEmail != false" class="p-error">El email es requerido</small>
-                <input class="btnForgot" type="button" @click="SendEmail" value="Enviar código de recuperación">
+                <small v-if="mail === '' && sendMsgEmail != false" class="p-error">El email es requerido</small>
+                <input class="btnForgot" type="button" @click="requestResetToken" value="Enviar código de recuperación">
             </div>
             <div id="btnDown">
                 <router-link to="/login"><span id="linkLogin">Volver a iniciar sesión</span></router-link>

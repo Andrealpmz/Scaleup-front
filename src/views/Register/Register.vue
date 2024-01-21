@@ -343,7 +343,7 @@
                                     required
                                     placeholder="Ingresa el código" />
                             </span>
-                            <small v-if="user_data.code === '' && validarStep3 === true" class="p-error">El código es requerido</small>
+                            <small v-if="user_data.code === '' && validarStep3 === true" class="p-error">El código es requerido</small> 
                         </div>
                         <div id="view4" v-show="step === 4" class="contentForm">
                             <div class="contentStep4">

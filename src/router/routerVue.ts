@@ -40,9 +40,10 @@ export default createRouter({
 			component: () => import('@views/Register/formRegisterInvited.vue'),
 		},
 		{
-			path: '/CreatePass',
+			path: '/CreatePass/:token',
 			name: 'CreatePass',
 			component: () => import('@views/Login/CreateNewPass.vue'),
+			props: true,
 		},
 		{
 			path: '/WelcomeUser',

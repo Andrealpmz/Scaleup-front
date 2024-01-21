@@ -10,7 +10,7 @@ export default defineStore('dataOrganization', {
         email: '',
         phone: '',
         country: 1,
-        city: 1,
+        city: '',
         password: '',
         form: '',
     })

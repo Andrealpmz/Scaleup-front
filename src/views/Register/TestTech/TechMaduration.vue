@@ -89,6 +89,19 @@ async function updateStatus(status : String) {
     }
 }
 
+function btnBack() {
+        if(step.value === 11){
+            step.value = step.value - ((boolStep7.value === true) ? 1 : 4)
+            progress.value -= porcent.value * ((boolStep7.value === true) ? 1 : 4);
+        }else if(step.value === 14){
+            step.value = step.value - ((boolStep12.value === true) ? 1 : 2)
+            progress.value -= porcent.value * ((boolStep12.value === true) ? 1 : 2);
+        }else {
+            step.value--;
+            progress.value -= porcent.value;
+        }
+    }
+
 function captureData(i: number, index: number) {
 
     //Valor númerico asignado por pregunta
@@ -134,8 +147,6 @@ function captureData(i: number, index: number) {
     numberTotal.value += data[i].value;
     console.log('Valor total: ' + numberTotal.value);
     console.log('Porcentaje: ' + (numberTotal.value / 178) * 100 + '%');
-    console.log('qes: ', testM.question);
-    console.log('cat: ', testM.category);
     test.push(testM);
 
     if (step.value === 23) {

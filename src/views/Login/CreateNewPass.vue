@@ -2,15 +2,19 @@
 import InputText from 'primevue/inputtext';
 
 export default {
+
+    props: ['token'],
     data() {
         return {
             password: {
                 pass: '',
                 pass2: ''
             },
-            email:{
+            
+           /*  email:{
                 email: ''
-            },
+            }, */
+            resetToken: null, 
             validateFields: false
         }
     }, 
@@ -19,45 +23,48 @@ export default {
         InputText
     },
 
+    created() {
+  // Access the resetToken from the route parameters
+  this.resetToken = this.$route.params.token;
+},
+
     methods: {
         async createPass() {
-  try {
-    const local_user = localStorage.getItem('userData');
-    const obj_local_user = JSON.parse(local_user);
+            
+            try {
+        const userData = {
+            resetToken: this.resetToken,
+      password: this.password.pass,
+        };
 
-    const userData = {
-      mail: this.email.email, // Asegúrate de usar la misma clave (email) que en el backend
-      password: this.password.pass, // Obtener la nueva contraseña desde la propiedad del componente
-    };
+        if (this.validatePassword(this.password.pass, this.password.pass2) !== true) {
+          console.error("Las contraseñas deben ser iguales");
+          alert("Las contraseñas deben ser iguales. Por favor, verifica tus contraseñas.");
+          return;
+        }
 
-    if (this.validatePassword(this.password.pass, this.password.pass2) !== true) {
-      console.error("Las contraseñas deben ser iguales");
-      alert("Las contraseñas deben ser iguales. Por favor, verifica tus contraseñas.");
-      return; // No continúes con la solicitud al servidor
-    }
+        const response = await fetch(import.meta.env.VITE_BACKEND + `/auth/reset_password/${this.resetToken}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(userData)
+        });
 
-    const response = await fetch(import.meta.env.VITE_BACKEND + "/auth/update_pass", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(userData)
-    });
-
-    if (response.ok) {
-      const data = await response.json();
-      alert("Contraseña actualizada con éxito!");
-      window.location.href = '/login';
-    } else if (response.status === 404){
-      console.error("Error en la solicitud:", response.statusText);
-      alert("Usuario no existe");
-    }else{
-        alert("Error");
-    }
-  } catch (error) {
-    console.error("Error al realizar la solicitud:", error);
-    alert("Error en el servidor. Por favor, inténtalo de nuevo.");
-  }
+        if (response.ok) {
+          const data = await response.json();
+          alert("Contraseña actualizada con éxito!");
+          window.location.href = '/login';
+        } else if (response.status === 401) {
+          console.error("Error en la solicitud:", response.statusText);
+          alert("Token no válido o expirado");
+        } else {
+          alert("Error");
+        }
+      } catch (error) {
+        console.error("Error al realizar la solicitud:", error);
+        alert("Error en el servidor. Por favor, inténtalo de nuevo.");
+      }
 },
 
         validatePassword(password1: string, password2: string): boolean {
@@ -88,7 +95,7 @@ export default {
             <div class="textinfofg">
                 <p class="textForgot">Crea una nueva contraseña que no uses en ningún otro sitio.</p>
             </div>
-            <label class="form-label" for="#email">Correo electronico</label>
+           <!--  <label class="form-label" for="#email">Correo electronico</label>
             <span class="p-input-icon-left">
                 <i class="icons-form">
                     <img draggable="false" src="@assets/svg/icon/mail.svg" class="material-symbols-rounded"/></i>
@@ -102,7 +109,7 @@ export default {
             </span>
             <small v-if="email.email === ''" class="p-error">El email es requerido</small>
             <div id="space"></div>
-
+ -->
             <label class="form-label" for="#password">Nueva contraseña</label>
             <span class="p-input-icon-left">
                 <i class="icons-form">
