@@ -25,8 +25,10 @@ export default {
 
     created() {
   // Access the resetToken from the route parameters
-  this.resetToken = this.$route.params.token;
+ // this.resetToken = this.$route.params.token;
+ this.resetToken = this.$route.params.token;
 },
+
 
     methods: {
         async createPass() {
@@ -34,9 +36,13 @@ export default {
             try {
         const userData = {
             resetToken: this.resetToken,
-      password: this.password.pass,
+            password: this.password.pass,
         };
 
+        console.log(userData.resetToken);
+        
+        console.log(this.resetToken);
+       
         if (this.validatePassword(this.password.pass, this.password.pass2) !== true) {
           console.error("Las contraseñas deben ser iguales");
           alert("Las contraseñas deben ser iguales. Por favor, verifica tus contraseñas.");
@@ -44,12 +50,17 @@ export default {
         }
 
         const response = await fetch(import.meta.env.VITE_BACKEND + `/auth/reset_password/${this.resetToken}`, {
+            
+            
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
-          },
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${this.resetToken}`
+    },
           body: JSON.stringify(userData)
         });
+
+        console.log(response);
 
         if (response.ok) {
           const data = await response.json();
@@ -58,6 +69,7 @@ export default {
         } else if (response.status === 401) {
           console.error("Error en la solicitud:", response.statusText);
           alert("Token no válido o expirado");
+          console.log(response);
         } else {
           alert("Error");
         }

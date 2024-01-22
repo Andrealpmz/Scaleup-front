@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onMounted, ref } from "vue";
+import { onMounted, ref, computed } from "vue";
 import hotkeys from "hotkeys-js";
 import navbarDash from "@components/navbar.vue";
 
@@ -92,6 +92,12 @@ function deleteWords() {
   search.value = "";
 }
 
+const filteredCategories = computed(() =>
+  qData.filter(category =>
+    category.title.toLowerCase().includes(search.value.toLowerCase())
+  )
+);
+
 const porcentaje = (obj_local_user.total_p / 178) * 100;
   const porcentajeRedondeado = Math.round(porcentaje)
 
@@ -124,16 +130,24 @@ function descargarInforme() {
     <div class="searchBox">
       <div class="conInput" v-on:keydown="onKeyDown">
         <img v-if="search === ''" draggable="false" class="SearchSVG" src="@assets/svg/search.svg" />
-        <input type="text" ref="searchInput" aria-label="Search" v-model="search" draggable="false" :style="search !== ''
-            ? { marginLeft: '10px', transition: 'none' }
-            : { marginLeft: '0' }
-          " :class="{ focusedInput: isFocused === true || search != '' }" @focus="isFocused = true"
-          @blur="isFocused = false" placeholder="Buscar categorías" />
-        <button v-if="search != ''" class="buttonClose">
+        <input
+          type="text"
+          ref="searchInput"
+          aria-label="Search"
+          v-model="search"
+          draggable="false"
+          :style="search !== '' ? { marginLeft: '10px', transition: 'none' } : { marginLeft: '0' }"
+          :class="{ focusedInput: isFocused === true || search !== '' }"
+          @focus="isFocused = true"
+          @blur="isFocused = false"
+          placeholder="Buscar categorías"
+        />
+        <button v-if="search !== ''" class="buttonClose">
           <img class="btnClose" @click="deleteWords" draggable="false" src="@assets/svg/close.svg" />
         </button>
       </div>
     </div>
+  
 
     <div class="optionsInfo">
       <h2 class="titulo">Categorías Test Madurez</h2>
@@ -148,9 +162,8 @@ function descargarInforme() {
         </div>
       </div>
     </div>
-
     <div v-if="displayGrid === true" id="Categories">
-      <router-link v-for="(category, i) in qData" :key="i" :to="'/CategoriesTest/' + category.nameLink">
+      <router-link v-for="(category, i) in filteredCategories" :key="i" :to="'/CategoriesTest/' + category.nameLink">
         <div class="cardCategory">
           <div class="dataCategory">
             <div class="Circle" :class="'cir' + (i + 1)"></div>
@@ -179,6 +192,7 @@ function descargarInforme() {
         </div>
       </router-link>
     </div>
+    
 
     <div v-if="displayGrid === false" id="CategoriesList">
       <table class="tableStyle">
@@ -192,7 +206,7 @@ function descargarInforme() {
           </tr>
         </thead>
         <tbody class="contentTable">
-          <tr v-for="(data, i) in qData" class="itemHover" v-bind:class="{ Zebra: i % 2 === 0 }">
+          <tr v-for="(data, i) in filteredCategories" class="itemHover" v-bind:class="{ Zebra: i % 2 === 0 }">
             <td>
               <div class="titleQuestionL">
                 <div :class="'circleList cir' + (i + 1)"></div>
@@ -249,9 +263,8 @@ function descargarInforme() {
       <p v-else><router-link to="/TechnologyReadiness" tag="button" id="downloadBtn">
           Completa todo el test para obtener tu resultado.
         </router-link></p>
-
+      </div>
     </div>
-  </div>
 </template>
 
 <style scoped>

@@ -3,6 +3,7 @@ export default {
   data() {
     return {
       activeItem: null as null | number, // Especifica que activeItem puede ser null o un número
+      companyName: '', // Agrega una propiedad para almacenar el nombre de la empresa
     };
   },
   methods: {
@@ -15,23 +16,38 @@ export default {
       this.$router.push('/');
     },
   },
+  mounted() {
+    // Obtener datos del usuario del localStorage
+    const userData = localStorage.getItem('userData');
+    
+    if (userData) {
+      // Parsear los datos del usuario
+      const user = JSON.parse(userData);
+      
+      // Verificar si el usuario tiene información de la empresa
+      if (user && user.company_name) {
+        this.companyName = user.company_name;
+      }
+    }
+  },
 };
-
 </script>
 
 <template>
-     <div>
-        <nav class="navbarDash">
-        <img src="@assets/svg/ScaleUp-logo.svg" draggable="false" class="logo">
-        <button class="icon-container">
-          <img src="@assets/svg/logout.svg" @click="cerrarSesion" class="icon-small" />
-        </button>
-       <div>
-        <p> nombre empresa</p>
-       </div> 
-     </nav>
-    </div>
+  <div>
+    <nav class="navbarDash">
+      <img src="@assets/svg/ScaleUp-logo.svg" draggable="false" class="logo">
+      <button class="icon-container">
+        <img src="@assets/svg/logout.svg" @click="cerrarSesion" class="icon-small" />
+      </button>
+      <div>
+        <h4 style="margin: 24px; margin-left: 1050px;"> Empresa {{ companyName }}</h4>
+        
+      </div> 
+    </nav>
+  </div>
 </template>
+
 
 <style scoped>
 
