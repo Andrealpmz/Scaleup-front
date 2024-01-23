@@ -1,6 +1,10 @@
 <script lang="ts">
 import InputText from 'primevue/inputtext';
 import OrgStore from "@src/stores/dataOrganization";
+import Swal from 'sweetalert2';
+    import 'sweetalert2/dist/sweetalert2.min.css';
+
+console.log(Swal);
 
 export default {
   data() {
@@ -33,16 +37,28 @@ const userDataJSON = JSON.stringify(userData);
         });
         if (response.ok) {
         const data = await response.json();
-        alert(data.message);
+        Swal.fire({
+                icon: 'success',
+                title: 'Bien!',
+                text: data.message + ', revisa tu correo y cierra esta página',
+            });
         // Optionally, you can redirect the user or show a confirmation message
         } else {
         const errorData = await response.json();
         console.error("Error en la solicitud:", response.statusText);
-        alert(errorData.error);
+        Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: errorData.error,
+            });
         }
       } catch (error) {
         console.error("Error al realizar la solicitud:", error);
-        alert("Error en el servidor. Por favor, inténtalo de nuevo.");
+        Swal.fire({
+                icon: 'warning',
+                title: 'Importante!',
+                text: 'Usuario no existe',
+            });
       }
     },
   },

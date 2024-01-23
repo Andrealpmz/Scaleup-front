@@ -4,11 +4,16 @@
     import InputMask from 'primevue/inputmask';
     import OrgStore from '@src/stores/dataOrganization';
     import { useRouter } from 'vue-router';
+    import Swal from 'sweetalert2';
+    import 'sweetalert2/dist/sweetalert2.min.css';
+
+console.log(Swal);
+    
 
     const user = OrgStore();
     const user_data = reactive({
         password2: '',
-        code: ''
+        code: '2'
     })
 
     const step = ref<number>(1)
@@ -36,7 +41,7 @@
                     step.value++
                 }
             }else if(step.value === 3){
-                validarStep3.value = true;
+                validarStep3.value = false;
                 if((user.password && user_data.password2 && user_data.code)!= ''){
                     if(validatePassword(user.password, user_data.password2)){            
                         step.value++
@@ -95,6 +100,11 @@
         // Request was successful
         if (winner.ok) {
             // HTTP status code is in the range 200-299
+            Swal.fire({
+                icon: 'success',
+                title: 'Bien!',
+                text: 'Solicitud exitosa',
+            });
             console.log('Solicitud exitosa');
             redirect.value = true;
             router.push('/login');
@@ -104,21 +114,38 @@
                 // Handle specific error for status code 400
                 const errorData = await winner.json();
                 console.error('Error en la solicitud:', errorData.message);
-                alert(errorData.message);
+                Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: errorData.message,
+            });
             } else {
                 // Handle other HTTP status codes
                 console.error('Error en la solicitud. Código de estado:', winner.status);
-                alert('Error en el servidor');
+                Swal.fire({
+                icon: 'error',
+                title: 'Bien!',
+                text: 'Error en el servidor',
+            });
             }
         }
     } else {
         // Timeout occurred
         console.error('Timeout: La solicitud ha tardado demasiado');
-        alert('La solicitud ha tardado demasiado, por favor recargar');
+        Swal.fire({
+                icon: 'warning',
+                title: 'Alerta!',
+                text: 'La solicitud ha tardado demasiado, por favor recargar',
+            });
     }
 } catch (error) {
     console.error('Error al realizar la solicitud:', error);
-    alert('Error en el servidor');
+            Swal.fire({
+            icon: 'error',
+            title: 'Error',
+            text: 'Error en el servidor',
+        });
+
 }
 }
 
@@ -136,6 +163,7 @@
 </script>
 
 <template>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha384-viwm5ZZo2EC6eA/r5xpL6L9aM2UqbOg9IZv/JFOCEbj2SujcQ5C73Bl2hrTt13H5" crossorigin="anonymous">
     <article id="content">
         <div id="left">
             <div class="elements">
@@ -331,21 +359,8 @@
                                     required
                                     placeholder="Confirma tu nueva contraseña" />
                             </span>
-                            <small v-if="user_data.password2 === '' && validarStep3 === true" class="p-error">La confirmación de contraseña es requerida</small>
+                            <small v-if="user_data.password2 === '' " class="p-error">La confirmación de contraseña es requerida</small>
                             <small v-else-if="validatePassword(user.password, user_data.password2)!= true && validarStep3 === true" class="p-error">Las contraseñas deben ser iguales</small>
-                            <p id="paragraph">A tu correo electrónico recibirás un código de confirmación para validar tu identidad</p>
-                            <label class="form-label" for="#nombre">Código</label>
-                            <span class="p-input-icon-left">
-                                <i class="icons-form"><img draggable="false" src="@assets/svg/icon/pin.svg" class="material-symbols-rounded"/></i>
-                                <InputText 
-                                    type="text" 
-                                    class="p-inputtext-sm" 
-                                    :class="{'p-invalid':user_data.code === '' && validarStep3 === true}"
-                                    v-model="user_data.code" 
-                                    required
-                                    placeholder="Ingresa el código" />
-                            </span>
-                            <small v-if="user_data.code === '' && validarStep3 === true" class="p-error">El código es requerido</small> 
                         </div>
                         <div id="view4" v-show="step === 4" class="contentForm">
                             <div class="contentStep4">

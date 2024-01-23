@@ -89,7 +89,7 @@ async function updateStatus(status : String) {
     }
 }
 
-function btnBack() {
+/* function btnBack() {
         if(step.value === 11){
             step.value = step.value - ((boolStep7.value === true) ? 1 : 4)
             progress.value -= porcent.value * ((boolStep7.value === true) ? 1 : 4);
@@ -100,7 +100,7 @@ function btnBack() {
             step.value--;
             progress.value -= porcent.value;
         }
-    }
+    } */
 
 function captureData(i: number, index: number) {
 
@@ -209,11 +209,11 @@ const data = [
 </script>
 
 <template>
-    <div class="returnMobile">
+    <!-- <div class="returnMobile">
         <span @click="btnBack()" id="btnReturnMobile" v-if="step > 0 && step != 23">
             <i class="pi pi-arrow-left material-symbols-outlined"></i>
         </span>
-    </div>
+    </div> -->
     <nav id="header" v-if="step != 23">
         <img src="@assets/svg/ScaleUp-logo.svg" draggable="false" class="logo">
     </nav>

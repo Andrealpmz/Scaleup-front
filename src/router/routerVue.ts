@@ -1,6 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router';
 import Home from '@views/Home.vue';
 
+function isAuthenticated() {
+	const userData = localStorage.getItem('userData');
+	return !!userData; // Retorna true si hay datos en el localStorage, false de lo contrario
+  }
+  
+
 export default createRouter({
 	history: createWebHistory(),
   	routes: [
@@ -54,7 +60,20 @@ export default createRouter({
 			path: '/TechnologyReadiness',
 			name: 'TechnologyReadiness',
 			component: () => import('@views/Register/TestTech/TechMaduration.vue'),
-		},
+			beforeEnter: (to, from, next) => {
+				if (isAuthenticated()) {
+					const userData = localStorage.getItem('userData');
+					const obj_local_user = JSON.parse(userData);
+					if (obj_local_user && obj_local_user.total_p !== null && obj_local_user.total_p !== 0) {
+					  next('/CategoriesTest'); 
+					} else {
+					  next();
+					}
+				  } else {
+					next('/login');
+				  }
+			},
+			},
 		{
 			path: '/TeamList',
 			name: 'TeamList',
@@ -64,46 +83,109 @@ export default createRouter({
 			path: '/CategoriesTest',
 			name: 'CategoriesTest',
 			component: () => import('@views/Dashboard/ModuleTestM/CategoriesTM.vue'),
+			beforeEnter: (to, from, next) => {
+				if (isAuthenticated()) {
+				next();
+				} else {
+				next('/login');
+				}
+			},
 		},
 		{
 			path: '/CategoriesTest/Organization',
 			name: 'Organization',
-			component: () => import('@views/Dashboard/ModuleTestM/Organizacion/Organizacion.vue')
+			component: () => import('@views/Dashboard/ModuleTestM/Organizacion/Organizacion.vue'),
+			beforeEnter: (to, from, next) => {
+				if (isAuthenticated()) {
+				next();
+				} else {
+				next('/login');
+				}
+			},
 		},
 		{
 			path: '/CategoriesTest/Strategy-Culture',
 			name: 'Strategy-Culture',
-			component: () => import('@views/Dashboard/ModuleTestM/Estrategia/Estrategia.vue')
+			component: () => import('@views/Dashboard/ModuleTestM/Estrategia/Estrategia.vue'),
+			beforeEnter: (to, from, next) => {
+				if (isAuthenticated()) {
+				next();
+				} else {
+				next('/login');
+				}
+			},
 		},
 		{
 			path: '/CategoriesTest/ClientExperience',
 			name: 'ClientExperience',
-			component: () => import('@views/Dashboard/ModuleTestM/Experience/Experience.vue')
+			component: () => import('@views/Dashboard/ModuleTestM/Experience/Experience.vue'),
+			beforeEnter: (to, from, next) => {
+				if (isAuthenticated()) {
+				next();
+				} else {
+				next('/login');
+				}
+			},
 		},
 		{
 			path: '/CategoriesTest/OrgCulTalent',
 			name: 'OrgCulTalent',
-			component: () => import('@views/Dashboard/ModuleTestM/Talento/Talento.vue')
+			component: () => import('@views/Dashboard/ModuleTestM/Talento/Talento.vue'),
+			beforeEnter: (to, from, next) => {
+				if (isAuthenticated()) {
+				next();
+				} else {
+				next('/login');
+				}
+			},
 		},
 		{
 			path: '/CategoriesTest/Product-Services',
 			name: 'Product-Services',
-			component: () => import('@views/Dashboard/ModuleTestM/Productos/Productos.vue')
+			component: () => import('@views/Dashboard/ModuleTestM/Productos/Productos.vue'),
+			beforeEnter: (to, from, next) => {
+				if (isAuthenticated()) {
+				next();
+				} else {
+				next('/login');
+				}
+			},
 		},
 		{
 			path: '/CategoriesTest/InfraTec',
 			name: 'InfraTec',
-			component: () => import('@views/Dashboard/ModuleTestM/Infra/Infra.vue')
+			component: () => import('@views/Dashboard/ModuleTestM/Infra/Infra.vue'),
+			beforeEnter: (to, from, next) => {
+				if (isAuthenticated()) {
+				next();
+				} else {
+				next('/login');
+				}
+			},
 		},
 		{
 			path: '/CategoriesTest/Process',
 			name: 'Process',
-			component: () => import('@views/Dashboard/ModuleTestM/Procesos/Procesos.vue')
+			component: () => import('@views/Dashboard/ModuleTestM/Procesos/Procesos.vue'),
+			beforeEnter: (to, from, next) => {
+				if (isAuthenticated()) {
+				next();
+				} else {
+				next('/login');
+				}
+			},
 		},
 		{
 			path: '/CategoriesTest/Info-Data',
 			name: 'Info-Data',
-			component: () => import('@views/Dashboard/ModuleTestM/Info/Info.vue')
+			component: () => import('@views/Dashboard/ModuleTestM/Info/Info.vue'),
+			beforeEnter: (to, from, next) => {
+				if (isAuthenticated()) {
+				next();
+				} else {
+				next('/login');
+				}
+			},
 		},
 		{
 			path: '/Profile/:id',

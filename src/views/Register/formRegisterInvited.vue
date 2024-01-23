@@ -185,7 +185,7 @@
                             </span>
                             <small v-if="user_data.password2 === '' && validarStep2 === true" class="p-error">La confirmación de contraseña es requerida</small>
                             <small v-else-if="validatePassword(user.password, user_data.password2)!= true && validarStep2 === true" class="p-error">Las contraseñas deben ser iguales</small>
-                            <p id="paragraph">A tu correo electrónico recibirás un código de confirmación para validar tu identidad</p>
+                            <!-- <p id="paragraph">A tu correo electrónico recibirás un código de confirmación para validar tu identidad</p>
                             <label class="form-label" for="#nombre">Código</label>
                             <span class="p-input-icon-left">
                                 <i class="icons-form"><img draggable="false" src="@assets/svg/icon/lock.svg" class="material-symbols-rounded"/></i>
@@ -197,7 +197,7 @@
                                     required
                                     placeholder="Ingresa el código" />
                             </span>
-                            <small v-if="user_data.code === '' && validarStep2 === true" class="p-error">El código es requerido</small>
+                            <small v-if="user_data.code === '' && validarStep2 === true" class="p-error">El código es requerido</small> -->
                         </div>
                         <div v-if="step === 3">
                             <div id="ready">

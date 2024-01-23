@@ -19,6 +19,13 @@ import router from './router/routerVue';
 
 import '@mdi/font/css/materialdesignicons.css';
 
+
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+
+
+
 //Config SW
 let swLocation = "sw.js";
 
@@ -103,6 +110,7 @@ app.config.globalProperties.$messaging = messaging;
 
 const pinia = createPinia();
 
+app.use(VueSweetalert2);
 app.use(router);
 app.use(pinia);
 app.use(PrimeVue);

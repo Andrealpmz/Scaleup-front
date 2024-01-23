@@ -1,7 +1,10 @@
 <script lang="ts" setup>
     import { ref, onMounted } from 'vue'
     import { useRouter } from 'vue-router';
+    import Swal from 'sweetalert2';
+    import 'sweetalert2/dist/sweetalert2.min.css';
 
+console.log(Swal);
 
     async function updateStatus(status : String) {
     try {
@@ -42,6 +45,11 @@
 
     onMounted(() => {
         updateStatus("terminado");
+        Swal.fire({
+                icon: 'info',
+                title: 'Información!',
+                text: 'Inicia sesión para ver tu resultado!',
+            });
         setTimeout(() => {
         redirect.value = true;
         router.push('/login');

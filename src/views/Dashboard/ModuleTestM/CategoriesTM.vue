@@ -2,6 +2,10 @@
 import { onMounted, ref, computed } from "vue";
 import hotkeys from "hotkeys-js";
 import navbarDash from "@components/navbar.vue";
+import Swal from 'sweetalert2';
+    import 'sweetalert2/dist/sweetalert2.min.css';
+
+console.log(Swal);
 
 onMounted(() => {
   
@@ -26,6 +30,11 @@ const qData = [
 if (obj_local_user.form === 'en_progreso') {
   qData.forEach(item => {
     item.contested = 0;
+    Swal.fire({
+                icon: 'warning',
+                title: 'Importante!',
+                text: 'Debes diligenciar el test de maduración para obtener tus resultados',
+            });
   });
 } else if (obj_local_user.form === 'terminado') {
   qData.forEach(item => {
@@ -118,7 +127,11 @@ function descargarInforme() {
   } else if (porcentajeRedondeado >= 81 && porcentajeRedondeado <= 100) {
     window.open('https://drive.google.com/file/d/1T33hD0zKKrHI0S51gSjLJCOss49Dv5Si/view?usp=share_link', '_blank');
   } else {
-    alert("Porcentaje no válido para descarga.");
+    Swal.fire({
+                icon: 'warning',
+                title: 'Importante!',
+                text: 'Porcentaje no válido para descarga.',
+            });
   }
   return porcentajeRedondeado;
 }

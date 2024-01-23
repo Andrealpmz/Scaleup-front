@@ -6,6 +6,10 @@ import gql from "graphql-tag";
 import OrgStore from "@src/stores/dataOrganization";
 import { useQuery, useMutation } from "@vue/apollo-composable";
 import { userInfo } from "os";
+import Swal from 'sweetalert2';
+    import 'sweetalert2/dist/sweetalert2.min.css';
+
+console.log(Swal);
 
 /*     const user = reactive({
         email: '',
@@ -61,11 +65,19 @@ async function toAccess() {
               }  
     } else {
       console.error("Credenciales incorrectas:", response.statusText);
-            alert("Credenciales incorrectas");
+      Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: 'Credenciales incorrectas',
+            });
     }
   } catch (error) {
     console.error("Error al realizar la solicitud:", error);
-    alert("Error en el servidor. Por favor, inténtalo de nuevo.");
+    Swal.fire({
+                icon: 'warning',
+                title: 'Importante!',
+                text: 'Error en el servidor. Por favor, inténtalo de nuevo.',
+            });
   }
 }
 </script>

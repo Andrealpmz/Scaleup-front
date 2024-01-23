@@ -1,5 +1,9 @@
 <script lang="ts">
 import InputText from 'primevue/inputtext';
+import Swal from 'sweetalert2';
+    import 'sweetalert2/dist/sweetalert2.min.css';
+
+console.log(Swal);
 
 export default {
 
@@ -45,7 +49,11 @@ export default {
        
         if (this.validatePassword(this.password.pass, this.password.pass2) !== true) {
           console.error("Las contraseñas deben ser iguales");
-          alert("Las contraseñas deben ser iguales. Por favor, verifica tus contraseñas.");
+          Swal.fire({
+                icon: 'warning',
+                title: 'Importante!',
+                text: 'Las contraseñas deben ser iguales. Por favor, verifica tus contraseñas.',
+            });
           return;
         }
 
@@ -64,18 +72,44 @@ export default {
 
         if (response.ok) {
           const data = await response.json();
-          alert("Contraseña actualizada con éxito!");
-          window.location.href = '/login';
+          Swal.fire({
+    icon: 'success',
+    title: 'Bien!',
+    text: 'Contraseña actualizada con éxito!',
+}).then(() => {
+    // Espera 1 segundo (1000 milisegundos) antes de redirigir
+    setTimeout(() => {
+        window.location.href = '/login';
+    }, 1000);
+});
         } else if (response.status === 401) {
           console.error("Error en la solicitud:", response.statusText);
-          alert("Token no válido o expirado");
+        Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: 'Token no válido o expirado, reenvia el correo',
+            }).then(() => {
+    // Espera 1 segundo (1000 milisegundos) antes de redirigir
+    setTimeout(() => {
+        window.location.href = '/forgotPass';
+    }, 1000);
+});
+            
           console.log(response);
         } else {
-          alert("Error");
+            Swal.fire({
+                icon: 'error',
+                title: 'Error!',
+                text: 'Error',
+            });
         }
       } catch (error) {
         console.error("Error al realizar la solicitud:", error);
-        alert("Error en el servidor. Por favor, inténtalo de nuevo.");
+        Swal.fire({
+                icon: 'warning',
+                title: 'Importante!',
+                text: 'Error en el servidor.',
+            });
       }
 },
 
