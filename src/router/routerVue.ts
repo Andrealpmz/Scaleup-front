@@ -75,11 +75,6 @@ export default createRouter({
 			},
 			},
 		{
-			path: '/TeamList',
-			name: 'TeamList',
-			component: () => import('@views/Dashboard/Team/WorkteamList.vue'),
-		},
-		{
 			path: '/CategoriesTest',
 			name: 'CategoriesTest',
 			component: () => import('@views/Dashboard/ModuleTestM/CategoriesTM.vue'),
@@ -188,30 +183,9 @@ export default createRouter({
 			},
 		},
 		{
-			path: '/Profile/:id',
-			name: 'Profile',
-			props: true,
-			component: () => import('@views/Dashboard/Team/Profile.vue'),
-		},
-		{
 			path: '/sidebar',
 			name: 'sidebar',
 			component: () => import('@components/sidebar.vue'),
-		},
-		{
-			path: '/projects',
-			name: 'projects',
-			component: () => import('@views/Dashboard/Projects/Projects.vue'),
-		},
-		{
-			path: '/projects/createProject/',
-			name: 'newProject',
-			component: () => import('@views/Dashboard/Projects/NewProject/createProject.vue'),
-		},
-		{
-			path: '/projects/detalle',
-			name: 'ProjectDetailing',
-			component: () => import('@views/Dashboard/Projects/ProjectDetail/ProjectDetailing.vue'),
 		},
   	],
 })

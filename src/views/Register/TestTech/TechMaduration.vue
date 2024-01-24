@@ -89,7 +89,7 @@ async function updateStatus(status : String) {
     }
 }
 
-/* function btnBack() {
+ function btnBack() {
         if(step.value === 11){
             step.value = step.value - ((boolStep7.value === true) ? 1 : 4)
             progress.value -= porcent.value * ((boolStep7.value === true) ? 1 : 4);
@@ -100,7 +100,7 @@ async function updateStatus(status : String) {
             step.value--;
             progress.value -= porcent.value;
         }
-    } */
+    } 
 
 function captureData(i: number, index: number) {
 
